@@ -1,0 +1,231 @@
+include:
+#include <s3eTypes.h>
+
+/*
+ * @brief The type of the controller events.
+ */
+enum  OuyaControllerEvent
+{
+  OUYA_CONTROLLER_MOTION_EVENT, // analog stick action
+  OUYA_CONTROLLER_BUTTON_EVENT, // buttons
+  OUYA_CONTROLLER_CONTROLLER_EVENT,  // touchpad touch
+  OUYA_CONTROLLER_CONTROLLER_MOTION_EVENT, // touchpad swipe
+  kNumControllerEvents
+};
+
+/*
+ * @brief Controller axis id values.
+ */
+enum  OuyaControllerAxisId
+{
+  OUYA_CONTROLLER_AXIS_LS_X = 0,
+  OUYA_CONTROLLER_AXIS_LS_Y = 1,
+  OUYA_CONTROLLER_AXIS_RS_X = 11,
+  OUYA_CONTROLLER_AXIS_RS_Y = 14,
+  OUYA_CONTROLLER_AXIS_L2 = 17,
+  OUYA_CONTROLLER_AXIS_R2 = 18,
+};
+ 
+/*
+ * @brief Controller button id values.
+ * @note  the use of AXIS_L2/R2 is supported; BUTTON_L2/R2 is deprecated.
+ */
+enum  OuyaControllerButtonId
+{
+  OUYA_CONTROLLER_BUTTON_DPAD_UP = 19,
+  OUYA_CONTROLLER_BUTTON_DPAD_DOWN = 20,
+  OUYA_CONTROLLER_BUTTON_DPAD_LEFT = 21,
+  OUYA_CONTROLLER_BUTTON_DPAD_RIGHT = 22,
+  OUYA_CONTROLLER_BUTTON_O = 96,
+  OUYA_CONTROLLER_BUTTON_U = 99,
+  OUYA_CONTROLLER_BUTTON_Y = 100,
+  OUYA_CONTROLLER_BUTTON_A = 97,
+  OUYA_CONTROLLER_BUTTON_L1 = 102,
+  OUYA_CONTROLLER_BUTTON_R1 = 103,
+  OUYA_CONTROLLER_BUTTON_L2 = 104,
+  OUYA_CONTROLLER_BUTTON_R2 = 105,
+  OUYA_CONTROLLER_BUTTON_L3 = 106,
+  OUYA_CONTROLLER_BUTTON_R3 = 107,
+  kNumControllerButtons
+};
+
+/*
+  @brief  State of buttons / touches.
+*/
+enum  OuyaControllerState
+{
+  OUYA_CONTROLLER_STATE_UP = 0x00,
+  OUYA_CONTROLLER_STATE_PRESSED = 0x01,
+  OUYA_CONTROLLER_STATE_DOWN = 0x02,
+  OUYA_CONTROLLER_STATE_RELEASED = 0x04,
+  OUYA_CONTROLLER_STATE_UNKNOWN,
+};
+
+/*
+ * @brief System data of an OUYA_CONTROLLER_MOTION_EVENT
+ */
+struct  OuyaControllerMotionEvent
+{
+  uint32  controllerId;
+  int32   x;
+  int32   y;
+};
+
+/*
+ * @brief System data of an OUYA_CONTROLLER_BUTTON_EVENT
+ */
+struct  OuyaControllerButtonEvent
+{
+  uint32  controllerId;
+  uint32  buttonId;
+  uint32  isPressed;
+};
+
+/*
+ * @brief System data of an OUYA_CONTROLLER_CONTROLLER_EVENT
+ */
+struct OuyaControllerTouchEvent
+{
+  uint32  controllerId;
+  uint32  isPressed;
+  int32   x;
+  int32   y;
+};
+
+/*
+ * @brief System data of an OUYA_CONTROLLER_CONTROLLER_MOTION_EVENT
+ */
+struct OuyaControllerTouchMotionEvent
+{
+  uint32  controllerId;
+  int32   x;
+  int32   y;
+};
+
+/*
+ * @brief System data of the callback for OuyaFacadeRequestGamerUUID.
+ */
+struct  OuyaFacadeGamerUUIDResult
+{
+  const char*	pGamerUUID;
+};
+
+struct  OuyaFacadeReceipt
+{
+  const char* pProductId;
+  const char* pProductName;
+};
+
+/*
+ * @brief System data of the callback for OuyaFacadeRequestReceipts.
+ */
+struct  OuyaFacadeReceiptsResult
+{
+  int                       numReceipts;
+  const OuyaFacadeReceipt*  parReceipt;
+};
+
+struct  OuyaFacadeProduct
+{
+  const char* pProductId;
+  const char* pName;
+  int         priceInCents;
+};
+
+/*
+ * @brief System data of the callback for OuyaFacadeRequestProductList.
+ */
+struct  OuyaFacadeProductListResult
+{
+  int                       numProducts;
+  const OuyaFacadeProduct*  parProducts;
+};
+
+/*
+ * @brief System data of the callback for OuyaFacadeRequestPurchase.
+ */
+struct	OuyaFacadePurchaseResult
+{
+  int         isSuccessful;
+  const char*	pProductId;
+  const char*	pProductName;
+};
+
+functions:
+/*
+ * @brief Initialises  the OuyaFacade.
+ */
+s3eResult ouyaInit(const char* pDeveloperId) run_on_os_thread
+
+/*
+ * @brief Terminates the OuyaFacade.
+ */
+void  ouyaTerm() run_on_os_thread
+
+/*
+ * @brief Requests the UUID for the current account. The system data parameter
+ *        of the callback will point to an OuyaFacadeGamerUUIDResult object.
+ */
+s3eResult  ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData)
+
+/*
+ * @brief Requests the receipts for the current account and app. The system
+ *        data parameter of the callback will point to an
+ *        OuyaFacadeReceiptsResult object.
+ */
+s3eResult  ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData)
+
+/*
+ * @brief Requests information for the given list of purchasables. The system
+ *        data parameter of the callback will point to an
+ *        OuyaFacadeProductListResult object.
+ */
+s3eResult  ouyaFacadeRequestProductList(const char** parPurchasable,  int numPurchasables, s3eCallback pCallback, void* pUserData)
+
+/*
+ * @brief Requests the purchase of the the given purchasable. The system data
+ *        parameter of the callback will point to an OuyaFacadePurchaseResult
+ *        object.
+ */
+s3eResult  ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallback, void* pUserData)
+
+/*
+ * @brief Registers a controller event handler for the given event type.
+ *        The system data parameter of the callback will point to objects type
+ *        corresponding the event type.
+ */
+s3eResult  ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
+
+/*
+ * @brief Unregisters the given controller event handler for the given event
+ *        type.
+ */
+s3eResult  ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallback)
+
+/*
+ * @brief Gives you the state of the given @a button on the given
+ *        @a controller.
+ */
+OuyaControllerState  ouyaControllerGetButtonState(uint32 controller, uint32 button);
+
+/*
+ * @brief Gives you the state of the given @axis on the given @a controller.
+ */
+int32 ouyaControllerGetAxis(uint32 controller, uint32 axis);
+
+/*
+ * @brief Gives you the state of the touchpad.
+ */
+OuyaControllerState  ouyaControllerGetTouchState(uint32 controller);
+
+/*
+ * @brief Gives you the last x touch coordinate from the given
+ *        @a controller.
+ */
+int32 ouyaControllerGetTouchX(uint32 controller);
+
+/*
+ * @brief Gives you the last y touch coordinate from the given
+ *        @a controller.
+ */
+int32 ouyaControllerGetTouchY(uint32 controller);
