@@ -143,19 +143,30 @@ void ouyaFaceOnKeyEvent(JNIEnv* env, jobject obj, jint deviceId, jint playerId, 
 
 void	ouyaFaceOnGamerUUIDResult(JNIEnv* env, jobject obj, jint error, jstring uuid)
 {
-  const char* pUUIDChars(env->GetStringUTFChars(uuid, false));
-  
-  jsize uuidSize(env->GetStringUTFLength(uuid) + 1);
-  void* pMem(s3eEdkMallocOS(uuidSize));
-  memcpy(pMem, pUUIDChars, uuidSize);
-  
-  env->ReleaseStringUTFChars(uuid, pUUIDChars);
-  
-  OuyaFacadeGamerUUIDResult r =
+  if(env->ExceptionOccurred() != 0)
   {
-    error,
-    static_cast<char*>(pMem)
-  };
+    env->ExceptionDescribe();
+    env->ExceptionClear();
+    return;
+  }
+
+  OuyaFacadeGamerUUIDResult r;
+  memset(&r, 0x00, sizeof(r));
+  r.error = error;
+
+  void* pMem(0);
+  if(error == OUYA_FACADE_ERROR_NONE)
+  {
+    const char* pUUIDChars(env->GetStringUTFChars(uuid, false));
+  
+    jsize uuidSize(env->GetStringUTFLength(uuid) + 1);
+    pMem = s3eEdkMallocOS(uuidSize);
+    memcpy(pMem, pUUIDChars, uuidSize);
+  
+    env->ReleaseStringUTFChars(uuid, pUUIDChars);
+  
+    r.pGamerUUID = static_cast<char*>(pMem);
+  }
 
   s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_FACADE_GAMER_UUID_EVENT,
     &r, sizeof(r), 0, true, ouyaFacadeCompleteCallback, pMem);
@@ -163,61 +174,73 @@ void	ouyaFaceOnGamerUUIDResult(JNIEnv* env, jobject obj, jint error, jstring uui
 
 void	ouyaFaceOnReceiptsResult(JNIEnv* env, jobject obj, jint error, jobjectArray receipts)
 {
-  jsize numReceipts(env->GetArrayLength(receipts));
-
-  void* pMem(s3eEdkMallocOS(sizeof(OuyaFacadeReceipt) * numReceipts));
-  OuyaFacadeReceipt*  parReceipt = static_cast<OuyaFacadeReceipt*>(pMem);
+  if(env->ExceptionOccurred() != 0)
+  {
+    env->ExceptionDescribe();
+    env->ExceptionClear();
+    return;
+  }
 
   OuyaFacadeReceiptsResult  r;
+  memset(&r, 0x00, sizeof(r));
   r.error = error;
-  r.numReceipts = numReceipts;
-  r.parReceipt = parReceipt;
 
-  jclass    cReceipt = env->FindClass("tv/ouya/console/api/Receipt");
-  jmethodID mReceiptGetIdentifier = env->GetMethodID(cReceipt, "getIdentifier",
-    "()Ljava/lang/string");
-  jmethodID mReceiptGetPriceInCents = env->GetMethodID(cReceipt, "getPriceInCents",
-    "()I");
-  jmethodID mReceiptGetPurchaseDate = env->GetMethodID(cReceipt, "getPurchaseDate",
-    "()Ljava/util/Date");
-  jmethodID mReceiptGetGeneratedDate = env->GetMethodID(cReceipt, "getGeneratedDate",
-    "()Ljava/util/Date");
-
-  jclass    cDate(env->FindClass("java/util/Date"));
-  jmethodID mDateGetTime(env->GetMethodID(cDate, "getTime", "()J"));
-  jobject   jDate;
-
-  for(int i = 0; i < numReceipts; ++i)
+  if(error == OUYA_FACADE_ERROR_NONE)
   {
-    jobject jReceipt = env->GetObjectArrayElement(receipts, i);
+    jsize numReceipts(env->GetArrayLength(receipts));
 
-    jstring jProductId = (jstring)env->CallObjectMethod(jReceipt,
-      mReceiptGetIdentifier);
+    void* pMem(s3eEdkMallocOS(sizeof(OuyaFacadeReceipt) * numReceipts));
+    OuyaFacadeReceipt*  parReceipt = static_cast<OuyaFacadeReceipt*>(pMem);
 
-    const char* pProductId(env->GetStringUTFChars(jProductId, false));
-    jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
-    pMem = s3eEdkMallocOS(productIdSize);
-    memcpy(pMem, pProductId, productIdSize);
+    r.numReceipts = numReceipts;
+    r.parReceipt = parReceipt;
+
+    jclass    cReceipt = env->FindClass("tv/ouya/console/api/Receipt");
+    jmethodID mReceiptGetIdentifier = env->GetMethodID(cReceipt, "getIdentifier",
+      "()Ljava/lang/string");
+    jmethodID mReceiptGetPriceInCents = env->GetMethodID(cReceipt, "getPriceInCents",
+      "()I");
+    jmethodID mReceiptGetPurchaseDate = env->GetMethodID(cReceipt, "getPurchaseDate",
+      "()Ljava/util/Date");
+    jmethodID mReceiptGetGeneratedDate = env->GetMethodID(cReceipt, "getGeneratedDate",
+      "()Ljava/util/Date");
+
+    jclass    cDate(env->FindClass("java/util/Date"));
+    jmethodID mDateGetTime(env->GetMethodID(cDate, "getTime", "()J"));
+    jobject   jDate;
+
+    for(int i = 0; i < numReceipts; ++i)
+    {
+      jobject jReceipt = env->GetObjectArrayElement(receipts, i);
+
+      jstring jProductId = (jstring)env->CallObjectMethod(jReceipt,
+        mReceiptGetIdentifier);
+
+      const char* pProductId(env->GetStringUTFChars(jProductId, false));
+      jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
+      pMem = s3eEdkMallocOS(productIdSize);
+      memcpy(pMem, pProductId, productIdSize);
     
-    env->ReleaseStringUTFChars(jProductId, pProductId);
-    env->DeleteLocalRef(jProductId);
+      env->ReleaseStringUTFChars(jProductId, pProductId);
+      env->DeleteLocalRef(jProductId);
     
-    parReceipt[i].pProductId = static_cast<char*>(pMem);
+      parReceipt[i].pProductId = static_cast<char*>(pMem);
 
-    parReceipt[i].priceInCents = env->CallIntMethod(jReceipt,
-      mReceiptGetPriceInCents);
+      parReceipt[i].priceInCents = env->CallIntMethod(jReceipt,
+        mReceiptGetPriceInCents);
 
-    jDate = env->CallObjectMethod(jReceipt, mReceiptGetPurchaseDate);
-    parReceipt[i].purchaseDate = env->CallLongMethod(jDate, mDateGetTime);
-    env->DeleteLocalRef(jDate);
+      jDate = env->CallObjectMethod(jReceipt, mReceiptGetPurchaseDate);
+      parReceipt[i].purchaseDate = env->CallLongMethod(jDate, mDateGetTime);
+      env->DeleteLocalRef(jDate);
 
-    jDate = env->CallObjectMethod(jReceipt, mReceiptGetGeneratedDate);
-    parReceipt[i].generatedDate = env->CallLongMethod(jDate, mDateGetTime);
-    env->DeleteLocalRef(jDate);
-  }
+      jDate = env->CallObjectMethod(jReceipt, mReceiptGetGeneratedDate);
+      parReceipt[i].generatedDate = env->CallLongMethod(jDate, mDateGetTime);
+      env->DeleteLocalRef(jDate);
+    }
   
-  env->DeleteLocalRef(cDate);
-  env->DeleteLocalRef(cReceipt);
+    env->DeleteLocalRef(cDate);
+    env->DeleteLocalRef(cReceipt);
+  }
 
   s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_FACADE_RECEIPTS_EVENT,
     &r, sizeof(r), 0, true, ouyaFacadeReceiptsCompleteCallback, 0);
@@ -225,55 +248,67 @@ void	ouyaFaceOnReceiptsResult(JNIEnv* env, jobject obj, jint error, jobjectArray
 
 void	ouyaFaceOnProductListResult(JNIEnv* env, jobject obj, jint error, jobjectArray products)
 {
-  jsize arraySize = env->GetArrayLength(products);
-  
-  void* pMem(s3eEdkMallocOS(sizeof(OuyaFacadeProduct) * arraySize));
-  OuyaFacadeProduct*  parProduct = static_cast<OuyaFacadeProduct*>(pMem);
-
-  OuyaFacadeProductListResult r;
-  r.error = error;
-  r.numProducts = arraySize;
-  r.parProduct = parProduct;
-  
-  jclass    cProduct = env->FindClass("tv/ouya/console/api/Product");
-  jmethodID mProductGetName = env->GetMethodID(cProduct, "getName",
-    "()Ljava/lang/string");
-  jmethodID mProductGetIdentifier = env->GetMethodID(cProduct, "getIdentifier",
-    "()Ljava/lang/string");
-  jmethodID mProductGetPriceInCents = env->GetMethodID(cProduct, "getPriceInCents",
-    "()I");
-
-  for(int i = 0; i < arraySize; ++i)
+  if(env->ExceptionOccurred() != 0)
   {
-    jobject jProduct = env->GetObjectArrayElement(products, i);
- 
-    jstring jName = (jstring)env->CallObjectMethod(jProduct, mProductGetName);
-    const char* pName(env->GetStringUTFChars(jName, false));
-    jsize nameSize(env->GetStringUTFLength(jName) + 1);
-    pMem = s3eEdkMallocOS(nameSize);
-    memcpy(pMem, pName, nameSize);
-    
-    parProduct[i].pName = static_cast<char*>(pMem);
-
-    env->ReleaseStringUTFChars(jName, pName);
-    env->DeleteLocalRef(jName);
-
-    jstring jProductId = (jstring)env->CallObjectMethod(jProduct, mProductGetIdentifier);
-    const char* pProductId(env->GetStringUTFChars(jProductId, false));
-    jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
-    pMem = s3eEdkMallocOS(productIdSize);
-    memcpy(pMem, pProductId, productIdSize);
-
-    parProduct[i].pProductId = static_cast<char*>(pMem);
-
-    env->ReleaseStringUTFChars(jProductId, pProductId);
-    env->DeleteLocalRef(jProductId);
-    
-    parProduct[i].priceInCents = env->CallIntMethod(jProduct,
-      mProductGetPriceInCents);
+    env->ExceptionDescribe();
+    env->ExceptionClear();
+    return;
   }
 
-  env->DeleteLocalRef(cProduct);
+  OuyaFacadeProductListResult r;
+  memset(&r, 0x00, sizeof(r));
+  r.error = error;
+
+  if(error == OUYA_FACADE_ERROR_NONE)
+  {
+    jsize arraySize = env->GetArrayLength(products);
+  
+    void* pMem(s3eEdkMallocOS(sizeof(OuyaFacadeProduct) * arraySize));
+    OuyaFacadeProduct*  parProduct = static_cast<OuyaFacadeProduct*>(pMem);
+
+    r.numProducts = arraySize;
+    r.parProduct = parProduct;
+  
+    jclass    cProduct = env->FindClass("tv/ouya/console/api/Product");
+    jmethodID mProductGetName = env->GetMethodID(cProduct, "getName",
+      "()Ljava/lang/string");
+    jmethodID mProductGetIdentifier = env->GetMethodID(cProduct, "getIdentifier",
+      "()Ljava/lang/string");
+    jmethodID mProductGetPriceInCents = env->GetMethodID(cProduct, "getPriceInCents",
+      "()I");
+
+    for(int i = 0; i < arraySize; ++i)
+    {
+      jobject jProduct = env->GetObjectArrayElement(products, i);
+ 
+      jstring jName = (jstring)env->CallObjectMethod(jProduct, mProductGetName);
+      const char* pName(env->GetStringUTFChars(jName, false));
+      jsize nameSize(env->GetStringUTFLength(jName) + 1);
+      pMem = s3eEdkMallocOS(nameSize);
+      memcpy(pMem, pName, nameSize);
+    
+      parProduct[i].pName = static_cast<char*>(pMem);
+
+      env->ReleaseStringUTFChars(jName, pName);
+      env->DeleteLocalRef(jName);
+
+      jstring jProductId = (jstring)env->CallObjectMethod(jProduct, mProductGetIdentifier);
+      const char* pProductId(env->GetStringUTFChars(jProductId, false));
+      jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
+      pMem = s3eEdkMallocOS(productIdSize);
+      memcpy(pMem, pProductId, productIdSize);
+
+      parProduct[i].pProductId = static_cast<char*>(pMem);
+
+      env->ReleaseStringUTFChars(jProductId, pProductId);
+      env->DeleteLocalRef(jProductId);
+    
+      parProduct[i].priceInCents = env->CallIntMethod(jProduct,
+        mProductGetPriceInCents);
+    }
+
+    env->DeleteLocalRef(cProduct);
+  }
 
   s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_FACADE_PRODUCT_LIST_EVENT,
     &r, sizeof(r), 0, true, ouyaFacadeProductListCompleteCallback, 0);
@@ -281,10 +316,18 @@ void	ouyaFaceOnProductListResult(JNIEnv* env, jobject obj, jint error, jobjectAr
 
 void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject product)
 {
+  if(env->ExceptionOccurred() != 0)
+  {
+    env->ExceptionDescribe();
+    env->ExceptionClear();
+    return;
+  }
+
   OuyaFacadePurchaseResult  r;
+  memset(&r, 0x00, sizeof(r));
   r.error = error;
 
-  if(error == OUYA_FACADE_NO_ERROR)
+  if(error == OUYA_FACADE_ERROR_NONE)
   {
     jclass    cProduct = env->FindClass("tv/ouya/console/api/Product");
 
@@ -458,16 +501,16 @@ void ouyaTerm_platform()
     env->CallVoidMethod(g_Obj, g_ouyaTerm);
 }
 
-bool ouyaFacadeIsInitialised_platform()
+int ouyaFacadeIsInitialised_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
-    return (bool)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsInitialised);
+    return (int)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsInitialised);
 }
 
-bool ouyaFacadeIsRunningOnOUYAHardware_platform()
+int ouyaFacadeIsRunningOnOUYAHardware_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
-    return (bool)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsRunningOnOUYAHardware);
+    return (int)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsRunningOnOUYAHardware);
 }
 
 void ouyaFacadeGetGameData_platform(const char* pKey, char* pBuffer, int bufferSize)
@@ -585,8 +628,7 @@ s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallba
 s3eResult ouyaControllerRegister_platform(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
 {
   s3eResult result = s3eEdkCallbacksRegister(S3E_EXT_OUYAFACE_HASH,
-    kNumOuyaControllerEvents, type, pCallback, pUserData,
-    true);
+    kNumOuyaControllerEvents, type, pCallback, pUserData, true);
 
   return result;
 }
@@ -599,10 +641,10 @@ s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallbac
   return result;
 }
 
-bool ouyaControllerGetButtonState_platform(uint32 controller, uint32 button)
+int ouyaControllerGetButtonState_platform(uint32 controller, uint32 button)
 {
   JNIEnv* env = s3eEdkJNIGetEnv();
-  return (bool)env->CallBooleanMethod(g_Obj, g_ouyaControllerGetButtonState, controller, button);
+  return (int)env->CallBooleanMethod(g_Obj, g_ouyaControllerGetButtonState, controller, button);
 }
 
 float ouyaControllerGetAxis_platform(uint32 controller, uint32 axis)

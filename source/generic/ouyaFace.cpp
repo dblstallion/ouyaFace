@@ -33,12 +33,12 @@ void ouyaTerm()
 	ouyaTerm_platform();
 }
 
-bool ouyaFacadeIsInitialised()
+int ouyaFacadeIsInitialised()
 {
 	return ouyaFacadeIsInitialised_platform();
 }
 
-bool ouyaFacadeIsRunningOnOUYAHardware()
+int ouyaFacadeIsRunningOnOUYAHardware()
 {
 	return ouyaFacadeIsRunningOnOUYAHardware_platform();
 }
@@ -88,7 +88,7 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
 	return ouyaControllerUnRegister_platform(type, pCallback);
 }
 
-bool ouyaControllerGetButtonState(uint32 controller, uint32 button)
+int ouyaControllerGetButtonState(uint32 controller, uint32 button)
 {
 	return ouyaControllerGetButtonState_platform(controller, button);
 }

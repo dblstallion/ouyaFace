@@ -15,8 +15,8 @@
  */
 typedef       void(*ouyaInit_t)(const char* pDeveloperId, const char* pApplicationKey);
 typedef       void(*ouyaTerm_t)();
-typedef       bool(*ouyaFacadeIsInitialised_t)();
-typedef       bool(*ouyaFacadeIsRunningOnOUYAHardware_t)();
+typedef        int(*ouyaFacadeIsInitialised_t)();
+typedef        int(*ouyaFacadeIsRunningOnOUYAHardware_t)();
 typedef       void(*ouyaFacadeGetGameData_t)(const char* pKey, char* pBuffer, int bufferSize);
 typedef       void(*ouyaFacadePutGameData_t)(const char* pKey, const char* pValue);
 typedef       void(*ouyaFacadeSetTestMode_t)();
@@ -26,7 +26,7 @@ typedef  s3eResult(*ouyaFacadeRequestProductList_t)(const char** parPurchasable,
 typedef  s3eResult(*ouyaFacadeRequestPurchase_t)(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerRegister_t)(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerUnRegister_t)(OuyaControllerEvent type, s3eCallback pCallback);
-typedef       bool(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
+typedef        int(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
 typedef      float(*ouyaControllerGetAxis_t)(uint32 controller, uint32 axis);
 
 /**
@@ -138,12 +138,12 @@ void ouyaTerm()
     return;
 }
 
-bool ouyaFacadeIsInitialised()
+int ouyaFacadeIsInitialised()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[2] func: ouyaFacadeIsInitialised"));
 
     if (!_extLoad())
-        return;
+        return S3E_FALSE;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -151,7 +151,7 @@ bool ouyaFacadeIsInitialised()
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
-    bool ret = g_Ext.m_ouyaFacadeIsInitialised();
+    int ret = g_Ext.m_ouyaFacadeIsInitialised();
 
 #ifdef __mips
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
@@ -160,12 +160,12 @@ bool ouyaFacadeIsInitialised()
     return ret;
 }
 
-bool ouyaFacadeIsRunningOnOUYAHardware()
+int ouyaFacadeIsRunningOnOUYAHardware()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[3] func: ouyaFacadeIsRunningOnOUYAHardware"));
 
     if (!_extLoad())
-        return;
+        return S3E_FALSE;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -173,7 +173,7 @@ bool ouyaFacadeIsRunningOnOUYAHardware()
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
-    bool ret = g_Ext.m_ouyaFacadeIsRunningOnOUYAHardware();
+    int ret = g_Ext.m_ouyaFacadeIsRunningOnOUYAHardware();
 
 #ifdef __mips
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
@@ -253,7 +253,7 @@ s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[7] func: ouyaFacadeRequestGamerUUID"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -275,7 +275,7 @@ s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[8] func: ouyaFacadeRequestReceipts"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -297,7 +297,7 @@ s3eResult ouyaFacadeRequestProductList(const char** parPurchasable, int numPurch
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[9] func: ouyaFacadeRequestProductList"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -319,7 +319,7 @@ s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallb
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[10] func: ouyaFacadeRequestPurchase"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -341,7 +341,7 @@ s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[11] func: ouyaControllerRegister"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -363,7 +363,7 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[12] func: ouyaControllerUnRegister"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -380,12 +380,12 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
     return ret;
 }
 
-bool ouyaControllerGetButtonState(uint32 controller, uint32 button)
+int ouyaControllerGetButtonState(uint32 controller, uint32 button)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[13] func: ouyaControllerGetButtonState"));
 
     if (!_extLoad())
-        return;
+        return S3E_FALSE;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 
@@ -393,7 +393,7 @@ bool ouyaControllerGetButtonState(uint32 controller, uint32 button)
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
-    bool ret = g_Ext.m_ouyaControllerGetButtonState(controller, button);
+    int ret = g_Ext.m_ouyaControllerGetButtonState(controller, button);
 
 #ifdef __mips
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
@@ -407,7 +407,7 @@ float ouyaControllerGetAxis(uint32 controller, uint32 axis)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[14] func: ouyaControllerGetAxis"));
 
     if (!_extLoad())
-        return;
+        return .0f;
 
 #ifdef __mips
     // For MIPs platform we do not have asm code for stack switching 

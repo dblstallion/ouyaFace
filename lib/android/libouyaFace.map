@@ -9,6 +9,8 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
  .note.GNU-stack
                 0x00000000        0x0 c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
+ _ZN7_JNIEnv14DeleteLocalRefEP8_jobject
+                0x00000000        0x0 release\ouyaFace_platform.os
  _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
                 0x00000000        0x0 release\ouyaFace_platform.os
  _ZN7_JNIEnv15CallFloatMethodEP8_jobjectP10_jmethodIDz
@@ -160,172 +162,175 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
  *(.plt)
  .plt           0x0000066c       0x98 c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
 
-.text           0x00000704     0x1b44
+.text           0x00000704     0x1c00
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text.exit     0x00000704       0x10 c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
                 0x00000704                __on_dlclose
- .text._ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+ .text._ZN7_JNIEnv14DeleteLocalRefEP8_jobject
                 0x00000714       0x14 release\ouyaFace_platform.os
-                0x00000714                _JNIEnv::GetMethodID(_jclass*, char const*, char const*)
+                0x00000714                _JNIEnv::DeleteLocalRef(_jobject*)
+ .text._ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+                0x00000728       0x14 release\ouyaFace_platform.os
+                0x00000728                _JNIEnv::GetMethodID(_jclass*, char const*, char const*)
  .text._Z26ouyaFaceTerminate_platformv
-                0x00000728        0x4 release\ouyaFace_platform.os
-                0x00000728                ouyaFaceTerminate_platform()
+                0x0000073c        0x4 release\ouyaFace_platform.os
+                0x0000073c                ouyaFaceTerminate_platform()
  .text._ZN7_JNIEnv15CallFloatMethodEP8_jobjectP10_jmethodIDz
-                0x0000072c       0x34 release\ouyaFace_platform.os
-                0x0000072c                _JNIEnv::CallFloatMethod(_jobject*, _jmethodID*, ...)
+                0x00000740       0x34 release\ouyaFace_platform.os
+                0x00000740                _JNIEnv::CallFloatMethod(_jobject*, _jmethodID*, ...)
  .text._ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
-                0x00000760       0x34 release\ouyaFace_platform.os
-                0x00000760                _JNIEnv::CallBooleanMethod(_jobject*, _jmethodID*, ...)
+                0x00000774       0x34 release\ouyaFace_platform.os
+                0x00000774                _JNIEnv::CallBooleanMethod(_jobject*, _jmethodID*, ...)
  .text._ZN7_JNIEnv14CallVoidMethodEP8_jobjectP10_jmethodIDz
-                0x00000794       0x34 release\ouyaFace_platform.os
-                0x00000794                _JNIEnv::CallVoidMethod(_jobject*, _jmethodID*, ...)
+                0x000007a8       0x34 release\ouyaFace_platform.os
+                0x000007a8                _JNIEnv::CallVoidMethod(_jobject*, _jmethodID*, ...)
  .text._ZN7_JNIEnv16CallObjectMethodEP8_jobjectP10_jmethodIDz
-                0x000007c8       0x34 release\ouyaFace_platform.os
-                0x000007c8                _JNIEnv::CallObjectMethod(_jobject*, _jmethodID*, ...)
+                0x000007dc       0x34 release\ouyaFace_platform.os
+                0x000007dc                _JNIEnv::CallObjectMethod(_jobject*, _jmethodID*, ...)
  .text._ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
-                0x000007fc       0x34 release\ouyaFace_platform.os
-                0x000007fc                _JNIEnv::NewObject(_jclass*, _jmethodID*, ...)
+                0x00000810       0x34 release\ouyaFace_platform.os
+                0x00000810                _JNIEnv::NewObject(_jclass*, _jmethodID*, ...)
  .text._ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
-                0x00000830       0x34 release\ouyaFace_platform.os
-                0x00000830                _JNIEnv::CallIntMethod(_jobject*, _jmethodID*, ...)
+                0x00000844       0x34 release\ouyaFace_platform.os
+                0x00000844                _JNIEnv::CallIntMethod(_jobject*, _jmethodID*, ...)
  .text._ZN7_JNIEnv14CallLongMethodEP8_jobjectP10_jmethodIDz
-                0x00000864       0x34 release\ouyaFace_platform.os
-                0x00000864                _JNIEnv::CallLongMethod(_jobject*, _jmethodID*, ...)
+                0x00000878       0x34 release\ouyaFace_platform.os
+                0x00000878                _JNIEnv::CallLongMethod(_jobject*, _jmethodID*, ...)
  .text._Z33ouyaControllerUnRegister_platform19OuyaControllerEventPFiPvS0_E
-                0x00000898       0x30 release\ouyaFace_platform.os
-                0x00000898                ouyaControllerUnRegister_platform(OuyaControllerEvent, int (*)(void*, void*))
+                0x000008ac       0x30 release\ouyaFace_platform.os
+                0x000008ac                ouyaControllerUnRegister_platform(OuyaControllerEvent, int (*)(void*, void*))
  .text._Z31ouyaControllerRegister_platform19OuyaControllerEventPFiPvS0_ES0_
-                0x000008c8       0x34 release\ouyaFace_platform.os
-                0x000008c8                ouyaControllerRegister_platform(OuyaControllerEvent, int (*)(void*, void*), void*)
+                0x000008dc       0x34 release\ouyaFace_platform.os
+                0x000008dc                ouyaControllerRegister_platform(OuyaControllerEvent, int (*)(void*, void*), void*)
  .text._Z18ouyaFaceOnKeyEventP7_JNIEnvP8_jobjectiiii
-                0x000008fc       0x54 release\ouyaFace_platform.os
-                0x000008fc                ouyaFaceOnKeyEvent(_JNIEnv*, _jobject*, int, int, int, int)
+                0x00000910       0x54 release\ouyaFace_platform.os
+                0x00000910                ouyaFaceOnKeyEvent(_JNIEnv*, _jobject*, int, int, int, int)
  .text._Z28ouyaFaceOnGenericMotionEventP7_JNIEnvP8_jobjectiiffffff
-                0x00000950       0x74 release\ouyaFace_platform.os
-                0x00000950                ouyaFaceOnGenericMotionEvent(_JNIEnv*, _jobject*, int, int, float, float, float, float, float, float)
+                0x00000964       0x74 release\ouyaFace_platform.os
+                0x00000964                ouyaFaceOnGenericMotionEvent(_JNIEnv*, _jobject*, int, int, float, float, float, float, float, float)
  .text._ZL37ouyaFacadeProductListCompleteCallbackjiPvS_iS_
-                0x000009c4       0x58 release\ouyaFace_platform.os
+                0x000009d8       0x58 release\ouyaFace_platform.os
  .text._ZL34ouyaFacadeReceiptsCompleteCallbackjiPvS_iS_
-                0x00000a1c       0x48 release\ouyaFace_platform.os
+                0x00000a30       0x48 release\ouyaFace_platform.os
  .text._ZL26ouyaFacadeCompleteCallbackjiPvS_iS_
-                0x00000a64        0x8 release\ouyaFace_platform.os
- .text._Z25ouyaFaceOnGamerUUIDResultP7_JNIEnvP8_jobjectiP8_jstring
-                0x00000a6c       0xc0 release\ouyaFace_platform.os
-                0x00000a6c                ouyaFaceOnGamerUUIDResult(_JNIEnv*, _jobject*, int, _jstring*)
+                0x00000a78        0x8 release\ouyaFace_platform.os
  .text._Z27ouyaFaceOnProductListResultP7_JNIEnvP8_jobjectiP13_jobjectArray
-                0x00000b2c      0x2c8 release\ouyaFace_platform.os
-                0x00000b2c                ouyaFaceOnProductListResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
+                0x00000a80      0x2fc release\ouyaFace_platform.os
+                0x00000a80                ouyaFaceOnProductListResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
  .text._Z24ouyaFaceOnReceiptsResultP7_JNIEnvP8_jobjectiP13_jobjectArray
-                0x00000df4      0x344 release\ouyaFace_platform.os
-                0x00000df4                ouyaFaceOnReceiptsResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
- .text._Z37ouyaFacadeRequestProductList_platformPPKciPFiPvS2_ES2_
-                0x00001138      0x158 release\ouyaFace_platform.os
-                0x00001138                ouyaFacadeRequestProductList_platform(char const**, int, int (*)(void*, void*), void*)
+                0x00000d7c      0x364 release\ouyaFace_platform.os
+                0x00000d7c                ouyaFaceOnReceiptsResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
+ .text._Z25ouyaFaceOnGamerUUIDResultP7_JNIEnvP8_jobjectiP8_jstring
+                0x000010e0      0x10c release\ouyaFace_platform.os
+                0x000010e0                ouyaFaceOnGamerUUIDResult(_JNIEnv*, _jobject*, int, _jstring*)
  .text._Z24ouyaFaceOnPurchaseResultP7_JNIEnvP8_jobjectiS2_
-                0x00001290      0x258 release\ouyaFace_platform.os
-                0x00001290                ouyaFaceOnPurchaseResult(_JNIEnv*, _jobject*, int, _jobject*)
- .text._Z30ouyaFacadeSetTestMode_platformv
-                0x000014e8       0x50 release\ouyaFace_platform.os
-                0x000014e8                ouyaFacadeSetTestMode_platform()
+                0x000011ec      0x280 release\ouyaFace_platform.os
+                0x000011ec                ouyaFaceOnPurchaseResult(_JNIEnv*, _jobject*, int, _jobject*)
+ .text._Z37ouyaFacadeRequestProductList_platformPPKciPFiPvS2_ES2_
+                0x0000146c      0x158 release\ouyaFace_platform.os
+                0x0000146c                ouyaFacadeRequestProductList_platform(char const**, int, int (*)(void*, void*), void*)
  .text._Z30ouyaControllerGetAxis_platformjj
-                0x00001538       0x60 release\ouyaFace_platform.os
-                0x00001538                ouyaControllerGetAxis_platform(unsigned int, unsigned int)
+                0x000015c4       0x60 release\ouyaFace_platform.os
+                0x000015c4                ouyaControllerGetAxis_platform(unsigned int, unsigned int)
  .text._Z17ouyaTerm_platformv
-                0x00001598       0x50 release\ouyaFace_platform.os
-                0x00001598                ouyaTerm_platform()
- .text._Z42ouyaFacadeIsRunningOnOUYAHardware_platformv
-                0x000015e8       0x58 release\ouyaFace_platform.os
-                0x000015e8                ouyaFacadeIsRunningOnOUYAHardware_platform()
- .text._Z32ouyaFacadeIsInitialised_platformv
-                0x00001640       0x58 release\ouyaFace_platform.os
-                0x00001640                ouyaFacadeIsInitialised_platform()
+                0x00001624       0x50 release\ouyaFace_platform.os
+                0x00001624                ouyaTerm_platform()
  .text._Z37ouyaControllerGetButtonState_platformjj
-                0x00001698       0x68 release\ouyaFace_platform.os
-                0x00001698                ouyaControllerGetButtonState_platform(unsigned int, unsigned int)
+                0x00001674       0x60 release\ouyaFace_platform.os
+                0x00001674                ouyaControllerGetButtonState_platform(unsigned int, unsigned int)
+ .text._Z42ouyaFacadeIsRunningOnOUYAHardware_platformv
+                0x000016d4       0x50 release\ouyaFace_platform.os
+                0x000016d4                ouyaFacadeIsRunningOnOUYAHardware_platform()
+ .text._Z32ouyaFacadeIsInitialised_platformv
+                0x00001724       0x50 release\ouyaFace_platform.os
+                0x00001724                ouyaFacadeIsInitialised_platform()
+ .text._Z30ouyaFacadeSetTestMode_platformv
+                0x00001774       0x50 release\ouyaFace_platform.os
+                0x00001774                ouyaFacadeSetTestMode_platform()
  .text._Z17ouyaInit_platformPKcS0_
-                0x00001700       0x90 release\ouyaFace_platform.os
-                0x00001700                ouyaInit_platform(char const*, char const*)
+                0x000017c4       0x90 release\ouyaFace_platform.os
+                0x000017c4                ouyaInit_platform(char const*, char const*)
  .text._Z30ouyaFacadePutGameData_platformPKcS0_
-                0x00001790       0xbc release\ouyaFace_platform.os
-                0x00001790                ouyaFacadePutGameData_platform(char const*, char const*)
+                0x00001854       0xbc release\ouyaFace_platform.os
+                0x00001854                ouyaFacadePutGameData_platform(char const*, char const*)
  .text._ZL27s3eEdkAndroidFindClass_realPKc
-                0x0000184c       0xb8 release\ouyaFace_platform.os
+                0x00001910       0xb8 release\ouyaFace_platform.os
  .text._Z30ouyaFacadeGetGameData_platformPKcPci
-                0x00001904      0x110 release\ouyaFace_platform.os
-                0x00001904                ouyaFacadeGetGameData_platform(char const*, char*, int)
+                0x000019c8      0x110 release\ouyaFace_platform.os
+                0x000019c8                ouyaFacadeGetGameData_platform(char const*, char*, int)
  .text._Z21ouyaFaceInit_platformv
-                0x00001a14      0x444 release\ouyaFace_platform.os
-                0x00001a14                ouyaFaceInit_platform()
+                0x00001ad8      0x43c release\ouyaFace_platform.os
+                0x00001ad8                ouyaFaceInit_platform()
  .text._Z35ouyaFacadeRequestGamerUUID_platformPFiPvS_ES_
-                0x00001e58       0x7c release\ouyaFace_platform.os
-                0x00001e58                ouyaFacadeRequestGamerUUID_platform(int (*)(void*, void*), void*)
+                0x00001f14       0x7c release\ouyaFace_platform.os
+                0x00001f14                ouyaFacadeRequestGamerUUID_platform(int (*)(void*, void*), void*)
  .text._Z34ouyaFacadeRequestReceipts_platformPFiPvS_ES_
-                0x00001ed4       0x7c release\ouyaFace_platform.os
-                0x00001ed4                ouyaFacadeRequestReceipts_platform(int (*)(void*, void*), void*)
+                0x00001f90       0x7c release\ouyaFace_platform.os
+                0x00001f90                ouyaFacadeRequestReceipts_platform(int (*)(void*, void*), void*)
  .text._Z34ouyaFacadeRequestPurchase_platformPKcPFiPvS1_ES1_
-                0x00001f50       0xb4 release\ouyaFace_platform.os
-                0x00001f50                ouyaFacadeRequestPurchase_platform(char const*, int (*)(void*, void*), void*)
+                0x0000200c       0xb4 release\ouyaFace_platform.os
+                0x0000200c                ouyaFacadeRequestPurchase_platform(char const*, int (*)(void*, void*), void*)
  .text.ouyaControllerGetAxis
-                0x00002004        0x4 release\ouyaFace.os
-                0x00002004                ouyaControllerGetAxis
+                0x000020c0        0x4 release\ouyaFace.os
+                0x000020c0                ouyaControllerGetAxis
  .text.ouyaControllerGetButtonState
-                0x00002008        0x4 release\ouyaFace.os
-                0x00002008                ouyaControllerGetButtonState
+                0x000020c4        0x4 release\ouyaFace.os
+                0x000020c4                ouyaControllerGetButtonState
  .text.ouyaControllerUnRegister
-                0x0000200c        0x4 release\ouyaFace.os
-                0x0000200c                ouyaControllerUnRegister
+                0x000020c8        0x4 release\ouyaFace.os
+                0x000020c8                ouyaControllerUnRegister
  .text.ouyaControllerRegister
-                0x00002010        0x4 release\ouyaFace.os
-                0x00002010                ouyaControllerRegister
+                0x000020cc        0x4 release\ouyaFace.os
+                0x000020cc                ouyaControllerRegister
  .text.ouyaFacadeRequestPurchase
-                0x00002014        0x4 release\ouyaFace.os
-                0x00002014                ouyaFacadeRequestPurchase
+                0x000020d0        0x4 release\ouyaFace.os
+                0x000020d0                ouyaFacadeRequestPurchase
  .text.ouyaFacadeRequestProductList
-                0x00002018        0x4 release\ouyaFace.os
-                0x00002018                ouyaFacadeRequestProductList
+                0x000020d4        0x4 release\ouyaFace.os
+                0x000020d4                ouyaFacadeRequestProductList
  .text.ouyaFacadeRequestReceipts
-                0x0000201c        0x4 release\ouyaFace.os
-                0x0000201c                ouyaFacadeRequestReceipts
+                0x000020d8        0x4 release\ouyaFace.os
+                0x000020d8                ouyaFacadeRequestReceipts
  .text.ouyaFacadeRequestGamerUUID
-                0x00002020        0x4 release\ouyaFace.os
-                0x00002020                ouyaFacadeRequestGamerUUID
+                0x000020dc        0x4 release\ouyaFace.os
+                0x000020dc                ouyaFacadeRequestGamerUUID
  .text.ouyaFacadeSetTestMode
-                0x00002024        0x4 release\ouyaFace.os
-                0x00002024                ouyaFacadeSetTestMode
+                0x000020e0        0x4 release\ouyaFace.os
+                0x000020e0                ouyaFacadeSetTestMode
  .text.ouyaFacadePutGameData
-                0x00002028        0x4 release\ouyaFace.os
-                0x00002028                ouyaFacadePutGameData
+                0x000020e4        0x4 release\ouyaFace.os
+                0x000020e4                ouyaFacadePutGameData
  .text.ouyaFacadeGetGameData
-                0x0000202c        0x4 release\ouyaFace.os
-                0x0000202c                ouyaFacadeGetGameData
+                0x000020e8        0x4 release\ouyaFace.os
+                0x000020e8                ouyaFacadeGetGameData
  .text.ouyaFacadeIsRunningOnOUYAHardware
-                0x00002030        0x4 release\ouyaFace.os
-                0x00002030                ouyaFacadeIsRunningOnOUYAHardware
+                0x000020ec        0x4 release\ouyaFace.os
+                0x000020ec                ouyaFacadeIsRunningOnOUYAHardware
  .text.ouyaFacadeIsInitialised
-                0x00002034        0x4 release\ouyaFace.os
-                0x00002034                ouyaFacadeIsInitialised
+                0x000020f0        0x4 release\ouyaFace.os
+                0x000020f0                ouyaFacadeIsInitialised
  .text.ouyaTerm
-                0x00002038        0x4 release\ouyaFace.os
-                0x00002038                ouyaTerm
+                0x000020f4        0x4 release\ouyaFace.os
+                0x000020f4                ouyaTerm
  .text.ouyaInit
-                0x0000203c        0x4 release\ouyaFace.os
-                0x0000203c                ouyaInit
+                0x000020f8        0x4 release\ouyaFace.os
+                0x000020f8                ouyaInit
  .text._Z17ouyaFaceTerminatev
-                0x00002040        0x4 release\ouyaFace.os
-                0x00002040                ouyaFaceTerminate()
+                0x000020fc        0x4 release\ouyaFace.os
+                0x000020fc                ouyaFaceTerminate()
  .text._Z12ouyaFaceInitv
-                0x00002044        0x4 release\ouyaFace.os
-                0x00002044                ouyaFaceInit()
+                0x00002100        0x4 release\ouyaFace.os
+                0x00002100                ouyaFaceInit()
  .text._ZL13ouyaTerm_wrapv
-                0x00002048       0x14 release\ouyaFace_register.os
+                0x00002104       0x14 release\ouyaFace_register.os
  .text._ZL13ouyaInit_wrapPKcS0_
-                0x0000205c       0x1c release\ouyaFace_register.os
+                0x00002118       0x1c release\ouyaFace_register.os
  .text.RegisterExt
-                0x00002078      0x1a0 release\ouyaFace_register.os
-                0x00002078                RegisterExt
+                0x00002134      0x1a0 release\ouyaFace_register.os
+                0x00002134                RegisterExt
  .text.s3eEdkThreadRunOnOS
-                0x00002218       0x30 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(edk_helpers.o)
-                0x00002218                s3eEdkThreadRunOnOS
+                0x000022d4       0x30 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(edk_helpers.o)
+                0x000022d4                s3eEdkThreadRunOnOS
  *(.gnu.warning)
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
@@ -338,14 +343,14 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .fini
  *(.fini)
-                0x00002248                PROVIDE (__etext, .)
-                0x00002248                PROVIDE (_etext, .)
-                0x00002248                PROVIDE (etext, .)
+                0x00002304                PROVIDE (__etext, .)
+                0x00002304                PROVIDE (_etext, .)
+                0x00002304                PROVIDE (etext, .)
 
-.rodata         0x00002248      0x430
+.rodata         0x00002304      0x430
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x00002248      0x430 release\ouyaFace_platform.os
+                0x00002304      0x430 release\ouyaFace_platform.os
                                 0x444 (size before relaxing)
  .rodata.str1.4
                 0x00000000        0xc release\ouyaFace_register.os
@@ -355,11 +360,11 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00002678                __exidx_start = .
+                0x00002734                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00002678                __exidx_end = .
+                0x00002734                __exidx_end = .
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -369,7 +374,7 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .gcc_except_table
  *(.gcc_except_table .gcc_except_table.*)
-                0x00002678                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
+                0x00002734                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
                 0x00003e58                . = (0x1000 DATA_SEGMENT_ALIGN 0x1000)
 
 .eh_frame

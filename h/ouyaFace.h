@@ -84,7 +84,7 @@ struct  OuyaControllerButtonEvent
 */
 enum  OuyaFacadeError
 {
-  OUYA_FACADE_NO_ERROR
+  OUYA_FACADE_ERROR_NONE
 };
 
 /*
@@ -161,12 +161,12 @@ void ouyaTerm();
 /*
  * @brief Tells you whether OuyaFacade was successfully initialised.
  */
-bool ouyaFacadeIsInitialised();
+int ouyaFacadeIsInitialised();
 
 /*
  * @brief Tells you whether the app is running on OUYA hardware.
  */
-bool ouyaFacadeIsRunningOnOUYAHardware();
+int ouyaFacadeIsRunningOnOUYAHardware();
 
 /*
  * @brief Attempts to retrieve and return a @a pValue stored under @a pKey.
@@ -228,7 +228,7 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
  * @brief Gives you the state of the given @a button on the given
  *        @a controller.
  */
-bool ouyaControllerGetButtonState(uint32 controller, uint32 button);
+int ouyaControllerGetButtonState(uint32 controller, uint32 button);
 
 /*
  * @brief Gives you the state of the given @axis on the given @a controller.
