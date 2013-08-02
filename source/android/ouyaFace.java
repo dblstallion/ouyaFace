@@ -55,7 +55,8 @@ import com.ideaworks3d.marmalade.LoaderAPI;
 
 class ouyaFace
 {
-	private static final int	NO_ERROR = 0x00;
+	private static final int	ERROR_NONE      = 0;
+	private static final int	ERROR_CANCELLED = -1;
 	
 	private final String LOG_TAG = "ouyaFace";
 
@@ -160,7 +161,7 @@ class ouyaFace
       @Override
       public void onSuccess(String result) {
         // TODO Auto-generated method stub
-        onGamerUUIDResult(NO_ERROR, result);
+        onGamerUUIDResult(ERROR_NONE, result);
       }
       
       @Override
@@ -173,7 +174,7 @@ class ouyaFace
       @Override
       public void onCancel() {
         // TODO Auto-generated method stub
-        onGamerUUIDResult(NO_ERROR, null);
+        onGamerUUIDResult(ERROR_CANCELLED, null);
       }
     });
   }
@@ -184,7 +185,7 @@ class ouyaFace
 
       @Override
       public void onCancel() {
-        onReceiptsResult(NO_ERROR, null);
+        onReceiptsResult(ERROR_CANCELLED, null);
       }
 
       @Override
@@ -232,7 +233,7 @@ class ouyaFace
         });
         
        
-        onReceiptsResult(NO_ERROR, (Receipt[]) receipts.toArray());
+        onReceiptsResult(ERROR_NONE, (Receipt[]) receipts.toArray());
       }
     });
   }
@@ -249,7 +250,7 @@ class ouyaFace
 
       @Override
       public void onCancel() {
-        onProductListResult(NO_ERROR, null);
+        onProductListResult(ERROR_CANCELLED, null);
       }
 
       @Override
@@ -260,7 +261,7 @@ class ouyaFace
 
       @Override
       public void onSuccess(ArrayList<Product> products) {
-        onProductListResult(NO_ERROR, (Product[]) products.toArray());
+        onProductListResult(ERROR_NONE, (Product[]) products.toArray());
       }
     });
   }
@@ -309,7 +310,7 @@ class ouyaFace
 
         @Override
         public void onCancel() {
-          onPurchaseResult(NO_ERROR, null);
+          onPurchaseResult(ERROR_CANCELLED, null);
         }
 
         @Override
@@ -355,7 +356,7 @@ class ouyaFace
             return;
           }
 
-          onPurchaseResult(NO_ERROR, product);
+          onPurchaseResult(ERROR_NONE, product);
         }
 		});
   }

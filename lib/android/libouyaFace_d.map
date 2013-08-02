@@ -826,20 +826,20 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
  .debug_pubnames
                 0x00000a85       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
 
-.debug_info     0x00000000     0xa0be
+.debug_info     0x00000000     0xa0c4
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x70c3 debug\ouyaFace_platform.os
- .debug_info    0x000070c3      0x443 debug\ouyaFace.os
- .debug_info    0x00007506      0x153 debug\ouyaFace_register.os
- .debug_info    0x00007659       0xd3 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
- .debug_info    0x0000772c       0xde c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_info    0x0000780a     0x1424 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_info    0x00008c2e       0xd7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
- .debug_info    0x00008d05      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_info    0x0000933b      0x606 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_info    0x00009941      0x5cb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
- .debug_info    0x00009f0c       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
- .debug_info    0x00009fe5       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+ .debug_info    0x00000000     0x70c9 debug\ouyaFace_platform.os
+ .debug_info    0x000070c9      0x443 debug\ouyaFace.os
+ .debug_info    0x0000750c      0x153 debug\ouyaFace_register.os
+ .debug_info    0x0000765f       0xd3 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+ .debug_info    0x00007732       0xde c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_info    0x00007810     0x1424 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_info    0x00008c34       0xd7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+ .debug_info    0x00008d0b      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_info    0x00009341      0x606 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_info    0x00009947      0x5cb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_info    0x00009f12       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+ .debug_info    0x00009feb       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
 
 .debug_abbrev   0x00000000      0xe70
  *(.debug_abbrev)
@@ -883,23 +883,23 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
  .debug_frame   0x00000cc0       0x48 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
  .debug_frame   0x00000d08       0x28 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
 
-.debug_str      0x00000000     0x6283
+.debug_str      0x00000000     0x629f
  *(.debug_str)
- .debug_str     0x00000000     0x5666 debug\ouyaFace_platform.os
-                               0x5815 (size before relaxing)
- .debug_str     0x00005666       0x91 debug\ouyaFace.os
+ .debug_str     0x00000000     0x5682 debug\ouyaFace_platform.os
+                               0x5831 (size before relaxing)
+ .debug_str     0x00005682       0x91 debug\ouyaFace.os
                                 0x422 (size before relaxing)
- .debug_str     0x000056f7       0xa4 debug\ouyaFace_register.os
+ .debug_str     0x00005713       0xa4 debug\ouyaFace_register.os
                                 0x1ca (size before relaxing)
- .debug_str     0x0000579b       0x97 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_str     0x000057b7       0x97 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
                                  0xbc (size before relaxing)
- .debug_str     0x00005832      0x7e9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_str     0x0000584e      0x7e9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
                                 0x8d2 (size before relaxing)
- .debug_str     0x0000601b      0x11b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_str     0x00006037      0x11b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
                                 0x438 (size before relaxing)
- .debug_str     0x00006136      0x143 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_str     0x00006152      0x143 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x00006279        0xa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_str     0x00006295        0xa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
                                 0x1f4 (size before relaxing)
 
 .debug_loc      0x00000000     0x2e0b

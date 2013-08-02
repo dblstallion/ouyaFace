@@ -67,7 +67,8 @@ struct  OuyaControllerButtonEvent
 */
 enum  OuyaFacadeError
 {
-  OUYA_FACADE_ERROR_NONE
+  OUYA_FACADE_ERROR_CANCELLED = -1,
+  OUYA_FACADE_ERROR_NONE = 0,
 };
 
 /*
