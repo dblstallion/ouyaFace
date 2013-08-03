@@ -10,6 +10,7 @@ This file should perform any platform-indepedentent functionality
  */
 
 
+#include <s3eEdk.h>
 #include "ouyaFace_internal.h"
 s3eResult ouyaFaceInit()
 {
@@ -80,12 +81,18 @@ s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallb
 
 s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
 {
-	return ouyaControllerRegister_platform(type, pCallback, pUserData);
+  s3eResult result = s3eEdkCallbacksRegister(S3E_EXT_OUYAFACE_HASH,
+    kNumOuyaControllerEvents, type, pCallback, pUserData, true);
+
+	return result;
 }
 
 s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallback)
 {
-	return ouyaControllerUnRegister_platform(type, pCallback);
+  s3eResult result = s3eEdkCallbacksUnRegister(S3E_EXT_OUYAFACE_HASH,
+    kNumOuyaControllerEvents, type, pCallback);
+
+  return result;
 }
 
 int ouyaControllerGetButtonState(uint32 controller, uint32 button)

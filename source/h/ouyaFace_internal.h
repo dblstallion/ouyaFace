@@ -64,9 +64,9 @@ s3eResult ouyaFacadeRequestProductList_platform(const char** parPurchasable, int
 
 s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
 
-s3eResult ouyaControllerRegister_platform(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
+//s3eResult ouyaControllerRegister_platform(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
 
-s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallback pCallback);
+//s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallback pCallback);
 
 int ouyaControllerGetButtonState_platform(uint32 controller, uint32 button);
 

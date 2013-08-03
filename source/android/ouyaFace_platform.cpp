@@ -440,13 +440,13 @@ s3eResult ouyaFaceInit_platform()
     if (!g_ouyaFacadeRequestPurchase)
         goto fail;
 
-    g_ouyaControllerRegister = env->GetMethodID(cls, "ouyaControllerRegister", "()I");
-    if (!g_ouyaControllerRegister)
-        goto fail;
+    //g_ouyaControllerRegister = env->GetMethodID(cls, "ouyaControllerRegister", "()I");
+    //if (!g_ouyaControllerRegister)
+    //    goto fail;
 
-    g_ouyaControllerUnRegister = env->GetMethodID(cls, "ouyaControllerUnRegister", "()I");
-    if (!g_ouyaControllerUnRegister)
-        goto fail;
+    //g_ouyaControllerUnRegister = env->GetMethodID(cls, "ouyaControllerUnRegister", "()I");
+    //if (!g_ouyaControllerUnRegister)
+    //    goto fail;
 
     g_ouyaControllerGetButtonState = env->GetMethodID(cls, "ouyaControllerGetButtonState", "(II)Z");
     if (!g_ouyaControllerGetButtonState)
@@ -625,21 +625,21 @@ s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallba
   return result;
 }
 
-s3eResult ouyaControllerRegister_platform(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
-{
-  s3eResult result = s3eEdkCallbacksRegister(S3E_EXT_OUYAFACE_HASH,
-    kNumOuyaControllerEvents, type, pCallback, pUserData, true);
+//s3eResult ouyaControllerRegister_platform(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
+//{
+//  s3eResult result = s3eEdkCallbacksRegister(S3E_EXT_OUYAFACE_HASH,
+//    kNumOuyaControllerEvents, type, pCallback, pUserData, true);
+//
+//  return result;
+//}
 
-  return result;
-}
-
-s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallback pCallback)
-{
-  s3eResult result = s3eEdkCallbacksUnRegister(S3E_EXT_OUYAFACE_HASH,
-    kNumOuyaControllerEvents, type, pCallback);
-
-  return result;
-}
+//s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallback pCallback)
+//{
+//  s3eResult result = s3eEdkCallbacksUnRegister(S3E_EXT_OUYAFACE_HASH,
+//    kNumOuyaControllerEvents, type, pCallback);
+//
+//  return result;
+//}
 
 int ouyaControllerGetButtonState_platform(uint32 controller, uint32 button)
 {

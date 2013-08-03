@@ -276,7 +276,7 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
  *(.plt)
  .plt           0x0000133c      0x17c c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
 
-.text           0x000014b8     0x5964
+.text           0x000014b8     0x584c
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text.exit     0x000014b8       0x10 c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtbegin_so.o
                 0x000014b8                __on_dlclose
@@ -388,206 +388,200 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
                 0x00002c20      0x2cc debug\ouyaFace_platform.os
                 0x00002c20                ouyaFaceOnPurchaseResult(_JNIEnv*, _jobject*, int, _jobject*)
  .text._Z21ouyaFaceInit_platformv
-                0x00002eec      0x7a0 debug\ouyaFace_platform.os
+                0x00002eec      0x6e8 debug\ouyaFace_platform.os
                 0x00002eec                ouyaFaceInit_platform()
  .text._Z26ouyaFaceTerminate_platformv
-                0x0000368c        0x4 debug\ouyaFace_platform.os
-                0x0000368c                ouyaFaceTerminate_platform()
+                0x000035d4        0x4 debug\ouyaFace_platform.os
+                0x000035d4                ouyaFaceTerminate_platform()
  .text._Z17ouyaInit_platformPKcS0_
-                0x00003690       0x88 debug\ouyaFace_platform.os
-                0x00003690                ouyaInit_platform(char const*, char const*)
+                0x000035d8       0x88 debug\ouyaFace_platform.os
+                0x000035d8                ouyaInit_platform(char const*, char const*)
  .text._Z17ouyaTerm_platformv
-                0x00003718       0x4c debug\ouyaFace_platform.os
-                0x00003718                ouyaTerm_platform()
+                0x00003660       0x4c debug\ouyaFace_platform.os
+                0x00003660                ouyaTerm_platform()
  .text._Z32ouyaFacadeIsInitialised_platformv
-                0x00003764       0x54 debug\ouyaFace_platform.os
-                0x00003764                ouyaFacadeIsInitialised_platform()
+                0x000036ac       0x54 debug\ouyaFace_platform.os
+                0x000036ac                ouyaFacadeIsInitialised_platform()
  .text._Z42ouyaFacadeIsRunningOnOUYAHardware_platformv
-                0x000037b8       0x54 debug\ouyaFace_platform.os
-                0x000037b8                ouyaFacadeIsRunningOnOUYAHardware_platform()
+                0x00003700       0x54 debug\ouyaFace_platform.os
+                0x00003700                ouyaFacadeIsRunningOnOUYAHardware_platform()
  .text._Z30ouyaFacadeGetGameData_platformPKcPci
-                0x0000380c      0x108 debug\ouyaFace_platform.os
-                0x0000380c                ouyaFacadeGetGameData_platform(char const*, char*, int)
+                0x00003754      0x108 debug\ouyaFace_platform.os
+                0x00003754                ouyaFacadeGetGameData_platform(char const*, char*, int)
  .text._Z30ouyaFacadePutGameData_platformPKcS0_
-                0x00003914       0xa8 debug\ouyaFace_platform.os
-                0x00003914                ouyaFacadePutGameData_platform(char const*, char const*)
+                0x0000385c       0xa8 debug\ouyaFace_platform.os
+                0x0000385c                ouyaFacadePutGameData_platform(char const*, char const*)
  .text._Z30ouyaFacadeSetTestMode_platformv
-                0x000039bc       0x4c debug\ouyaFace_platform.os
-                0x000039bc                ouyaFacadeSetTestMode_platform()
+                0x00003904       0x4c debug\ouyaFace_platform.os
+                0x00003904                ouyaFacadeSetTestMode_platform()
  .text._Z35ouyaFacadeRequestGamerUUID_platformPFiPvS_ES_
-                0x00003a08       0x98 debug\ouyaFace_platform.os
-                0x00003a08                ouyaFacadeRequestGamerUUID_platform(int (*)(void*, void*), void*)
+                0x00003950       0x98 debug\ouyaFace_platform.os
+                0x00003950                ouyaFacadeRequestGamerUUID_platform(int (*)(void*, void*), void*)
  .text._Z34ouyaFacadeRequestReceipts_platformPFiPvS_ES_
-                0x00003aa0       0x98 debug\ouyaFace_platform.os
-                0x00003aa0                ouyaFacadeRequestReceipts_platform(int (*)(void*, void*), void*)
+                0x000039e8       0x98 debug\ouyaFace_platform.os
+                0x000039e8                ouyaFacadeRequestReceipts_platform(int (*)(void*, void*), void*)
  .text._Z37ouyaFacadeRequestProductList_platformPPKciPFiPvS2_ES2_
-                0x00003b38      0x178 debug\ouyaFace_platform.os
-                0x00003b38                ouyaFacadeRequestProductList_platform(char const**, int, int (*)(void*, void*), void*)
+                0x00003a80      0x178 debug\ouyaFace_platform.os
+                0x00003a80                ouyaFacadeRequestProductList_platform(char const**, int, int (*)(void*, void*), void*)
  .text._Z34ouyaFacadeRequestPurchase_platformPKcPFiPvS1_ES1_
-                0x00003cb0       0xc4 debug\ouyaFace_platform.os
-                0x00003cb0                ouyaFacadeRequestPurchase_platform(char const*, int (*)(void*, void*), void*)
- .text._Z31ouyaControllerRegister_platform19OuyaControllerEventPFiPvS0_ES0_
-                0x00003d74       0x58 debug\ouyaFace_platform.os
-                0x00003d74                ouyaControllerRegister_platform(OuyaControllerEvent, int (*)(void*, void*), void*)
- .text._Z33ouyaControllerUnRegister_platform19OuyaControllerEventPFiPvS0_E
-                0x00003dcc       0x4c debug\ouyaFace_platform.os
-                0x00003dcc                ouyaControllerUnRegister_platform(OuyaControllerEvent, int (*)(void*, void*))
+                0x00003bf8       0xc4 debug\ouyaFace_platform.os
+                0x00003bf8                ouyaFacadeRequestPurchase_platform(char const*, int (*)(void*, void*), void*)
  .text._Z37ouyaControllerGetButtonState_platformjj
-                0x00003e18       0x68 debug\ouyaFace_platform.os
-                0x00003e18                ouyaControllerGetButtonState_platform(unsigned int, unsigned int)
+                0x00003cbc       0x68 debug\ouyaFace_platform.os
+                0x00003cbc                ouyaControllerGetButtonState_platform(unsigned int, unsigned int)
  .text._Z30ouyaControllerGetAxis_platformjj
-                0x00003e80       0x70 debug\ouyaFace_platform.os
-                0x00003e80                ouyaControllerGetAxis_platform(unsigned int, unsigned int)
+                0x00003d24       0x70 debug\ouyaFace_platform.os
+                0x00003d24                ouyaControllerGetAxis_platform(unsigned int, unsigned int)
  .text._Z12ouyaFaceInitv
-                0x00003ef0       0x14 debug\ouyaFace.os
-                0x00003ef0                ouyaFaceInit()
+                0x00003d94       0x14 debug\ouyaFace.os
+                0x00003d94                ouyaFaceInit()
  .text._Z17ouyaFaceTerminatev
-                0x00003f04        0xc debug\ouyaFace.os
-                0x00003f04                ouyaFaceTerminate()
+                0x00003da8        0xc debug\ouyaFace.os
+                0x00003da8                ouyaFaceTerminate()
  .text.ouyaInit
-                0x00003f10       0x24 debug\ouyaFace.os
-                0x00003f10                ouyaInit
+                0x00003db4       0x24 debug\ouyaFace.os
+                0x00003db4                ouyaInit
  .text.ouyaTerm
-                0x00003f34        0xc debug\ouyaFace.os
-                0x00003f34                ouyaTerm
+                0x00003dd8        0xc debug\ouyaFace.os
+                0x00003dd8                ouyaTerm
  .text.ouyaFacadeIsInitialised
-                0x00003f40       0x14 debug\ouyaFace.os
-                0x00003f40                ouyaFacadeIsInitialised
+                0x00003de4       0x14 debug\ouyaFace.os
+                0x00003de4                ouyaFacadeIsInitialised
  .text.ouyaFacadeIsRunningOnOUYAHardware
-                0x00003f54       0x14 debug\ouyaFace.os
-                0x00003f54                ouyaFacadeIsRunningOnOUYAHardware
+                0x00003df8       0x14 debug\ouyaFace.os
+                0x00003df8                ouyaFacadeIsRunningOnOUYAHardware
  .text.ouyaFacadeGetGameData
-                0x00003f68       0x2c debug\ouyaFace.os
-                0x00003f68                ouyaFacadeGetGameData
+                0x00003e0c       0x2c debug\ouyaFace.os
+                0x00003e0c                ouyaFacadeGetGameData
  .text.ouyaFacadePutGameData
-                0x00003f94       0x24 debug\ouyaFace.os
-                0x00003f94                ouyaFacadePutGameData
+                0x00003e38       0x24 debug\ouyaFace.os
+                0x00003e38                ouyaFacadePutGameData
  .text.ouyaFacadeSetTestMode
-                0x00003fb8        0xc debug\ouyaFace.os
-                0x00003fb8                ouyaFacadeSetTestMode
+                0x00003e5c        0xc debug\ouyaFace.os
+                0x00003e5c                ouyaFacadeSetTestMode
  .text.ouyaFacadeRequestGamerUUID
-                0x00003fc4       0x2c debug\ouyaFace.os
-                0x00003fc4                ouyaFacadeRequestGamerUUID
+                0x00003e68       0x2c debug\ouyaFace.os
+                0x00003e68                ouyaFacadeRequestGamerUUID
  .text.ouyaFacadeRequestReceipts
-                0x00003ff0       0x2c debug\ouyaFace.os
-                0x00003ff0                ouyaFacadeRequestReceipts
+                0x00003e94       0x2c debug\ouyaFace.os
+                0x00003e94                ouyaFacadeRequestReceipts
  .text.ouyaFacadeRequestProductList
-                0x0000401c       0x3c debug\ouyaFace.os
-                0x0000401c                ouyaFacadeRequestProductList
+                0x00003ec0       0x3c debug\ouyaFace.os
+                0x00003ec0                ouyaFacadeRequestProductList
  .text.ouyaFacadeRequestPurchase
-                0x00004058       0x34 debug\ouyaFace.os
-                0x00004058                ouyaFacadeRequestPurchase
+                0x00003efc       0x34 debug\ouyaFace.os
+                0x00003efc                ouyaFacadeRequestPurchase
  .text.ouyaControllerRegister
-                0x0000408c       0x34 debug\ouyaFace.os
-                0x0000408c                ouyaControllerRegister
+                0x00003f30       0x58 debug\ouyaFace.os
+                0x00003f30                ouyaControllerRegister
  .text.ouyaControllerUnRegister
-                0x000040c0       0x2c debug\ouyaFace.os
-                0x000040c0                ouyaControllerUnRegister
+                0x00003f88       0x4c debug\ouyaFace.os
+                0x00003f88                ouyaControllerUnRegister
  .text.ouyaControllerGetButtonState
-                0x000040ec       0x2c debug\ouyaFace.os
-                0x000040ec                ouyaControllerGetButtonState
+                0x00003fd4       0x2c debug\ouyaFace.os
+                0x00003fd4                ouyaControllerGetButtonState
  .text.ouyaControllerGetAxis
-                0x00004118       0x34 debug\ouyaFace.os
-                0x00004118                ouyaControllerGetAxis
+                0x00004000       0x34 debug\ouyaFace.os
+                0x00004000                ouyaControllerGetAxis
  .text._ZL13ouyaInit_wrapPKcS0_
-                0x0000414c       0xa0 debug\ouyaFace_register.os
+                0x00004034       0xa0 debug\ouyaFace_register.os
  .text._ZL13ouyaTerm_wrapv
-                0x000041ec       0x88 debug\ouyaFace_register.os
+                0x000040d4       0x88 debug\ouyaFace_register.os
  .text._Z19ouyaFaceRegisterExtv
-                0x00004274      0x174 debug\ouyaFace_register.os
-                0x00004274                ouyaFaceRegisterExt()
+                0x0000415c      0x174 debug\ouyaFace_register.os
+                0x0000415c                ouyaFaceRegisterExt()
  .text.RegisterExt
-                0x000043e8        0xc debug\ouyaFace_register.os
-                0x000043e8                RegisterExt
+                0x000042d0        0xc debug\ouyaFace_register.os
+                0x000042d0                RegisterExt
  .text.IwDebugTraceSetTraceChannel
-                0x000043f4       0x1c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x000043f4                IwDebugTraceSetTraceChannel
+                0x000042dc       0x1c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x000042dc                IwDebugTraceSetTraceChannel
  .text.IwDebugAssertSetUID
-                0x00004410       0x14 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x00004410                IwDebugAssertSetUID
+                0x000042f8       0x14 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x000042f8                IwDebugAssertSetUID
  .text._GLOBAL__I_Z__sdk_modules_iwcore_source_IwDebug.cpp
-                0x00004424       0xa4 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x0000430c       0xa4 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
  .text.IwDebugAssertIsChannelOn
-                0x000044c8      0x204 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x000044c8                IwDebugAssertIsChannelOn
+                0x000043b0      0x204 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x000043b0                IwDebugAssertIsChannelOn
  .text.IwDebugAssertSetMessage
-                0x000046cc       0xfc C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x000046cc                IwDebugAssertSetMessage
+                0x000045b4       0xfc C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x000045b4                IwDebugAssertSetMessage
  .text.IwDebugAssertSetSolution
-                0x000047c8       0xa0 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x000047c8                IwDebugAssertSetSolution
+                0x000046b0       0xa0 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x000046b0                IwDebugAssertSetSolution
  .text.IwDebugAssertShow
-                0x00004868      0x2d0 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x00004868                IwDebugAssertShow
+                0x00004750      0x2d0 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x00004750                IwDebugAssertShow
  .text.IwDebugTraceIsChannelOn
-                0x00004b38      0x2b8 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x00004b38                IwDebugTraceIsChannelOn
+                0x00004a20      0x2b8 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x00004a20                IwDebugTraceIsChannelOn
  .text.IwDebugTraceLinePrintf
-                0x00004df0      0x10c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
-                0x00004df0                IwDebugTraceLinePrintf
+                0x00004cd8      0x10c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x00004cd8                IwDebugTraceLinePrintf
  .text.s3eEdkThreadRunOnOS
-                0x00004efc       0x30 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(edk_helpers.o)
-                0x00004efc                s3eEdkThreadRunOnOS
- .text          0x00004f2c       0x1c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
-                0x00004f2c                __aeabi_ldivmod
- .text          0x00004f48       0x88 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
-                0x00004f48                __gnu_uldivmod_helper
-                0x00004f8c                __gnu_ldivmod_helper
- .text          0x00004fd0      0xec4 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
-                0x000059f8                __gnu_Unwind_RaiseException
-                0x00005550                __aeabi_unwind_cpp_pr0
-                0x00005080                _Unwind_GetCFA
-                0x0000501c                _Unwind_VRS_Set
-                0x00005794                __gnu_Unwind_Backtrace
-                0x00005b28                _Unwind_VRS_Pop
-                0x00005540                __aeabi_unwind_cpp_pr2
-                0x0000508c                _Unwind_DeleteException
-                0x00005088                _Unwind_Complete
-                0x00005abc                __gnu_Unwind_Resume
-                0x00005984                __gnu_Unwind_ForcedUnwind
-                0x00005a9c                __gnu_Unwind_Resume_or_Rethrow
-                0x00004fd0                _Unwind_VRS_Get
-                0x00005548                __aeabi_unwind_cpp_pr1
- .text          0x00005e94      0x1a8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
-                0x00005ff4                ___Unwind_ForcedUnwind
-                0x00005eb0                __gnu_Unwind_Save_VFP
-                0x00005fd0                _Unwind_Resume_or_Rethrow
-                0x00005fd0                ___Unwind_Resume_or_Rethrow
-                0x00006018                _Unwind_Backtrace
-                0x00005e94                __restore_core_regs
-                0x00005ed0                __gnu_Unwind_Save_VFP_D_16_to_31
-                0x00005ec0                __gnu_Unwind_Save_VFP_D
-                0x00006018                ___Unwind_Backtrace
-                0x00005f88                ___Unwind_RaiseException
-                0x00005fac                ___Unwind_Resume
-                0x00005ed8                __gnu_Unwind_Restore_WMMXD
-                0x00005ea8                __gnu_Unwind_Restore_VFP
-                0x00005fac                _Unwind_Resume
-                0x00005eb8                __gnu_Unwind_Restore_VFP_D
-                0x00005ec8                __gnu_Unwind_Restore_VFP_D_16_to_31
-                0x00005f88                _Unwind_RaiseException
-                0x00005e94                restore_core_regs
-                0x00005f74                __gnu_Unwind_Save_WMMXC
-                0x00005f60                __gnu_Unwind_Restore_WMMXC
-                0x00005ff4                _Unwind_ForcedUnwind
-                0x00005f1c                __gnu_Unwind_Save_WMMXD
- .text          0x0000603c      0x484 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
-                0x000060dc                _Unwind_GetRegionStart
-                0x00006108                __gnu_unwind_execute
-                0x00006094                _Unwind_GetTextRelBase
-                0x000060a4                _Unwind_GetLanguageSpecificData
-                0x00006480                __gnu_unwind_frame
-                0x0000609c                _Unwind_GetDataRelBase
- .text          0x000064c0      0x47c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
-                0x000064c0                __divdi3
- .text          0x0000693c      0x40c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
-                0x0000693c                __udivdi3
- .text          0x00006d48       0xc4 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
-                0x00006d48                __udivsi3
-                0x00006d48                __aeabi_uidiv
-                0x00006df4                __aeabi_uidivmod
- .text          0x00006e0c       0x10 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
-                0x00006e0c                __div0
+                0x00004de4       0x30 C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(edk_helpers.o)
+                0x00004de4                s3eEdkThreadRunOnOS
+ .text          0x00004e14       0x1c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+                0x00004e14                __aeabi_ldivmod
+ .text          0x00004e30       0x88 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+                0x00004e30                __gnu_uldivmod_helper
+                0x00004e74                __gnu_ldivmod_helper
+ .text          0x00004eb8      0xec4 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+                0x000058e0                __gnu_Unwind_RaiseException
+                0x00005438                __aeabi_unwind_cpp_pr0
+                0x00004f68                _Unwind_GetCFA
+                0x00004f04                _Unwind_VRS_Set
+                0x0000567c                __gnu_Unwind_Backtrace
+                0x00005a10                _Unwind_VRS_Pop
+                0x00005428                __aeabi_unwind_cpp_pr2
+                0x00004f74                _Unwind_DeleteException
+                0x00004f70                _Unwind_Complete
+                0x000059a4                __gnu_Unwind_Resume
+                0x0000586c                __gnu_Unwind_ForcedUnwind
+                0x00005984                __gnu_Unwind_Resume_or_Rethrow
+                0x00004eb8                _Unwind_VRS_Get
+                0x00005430                __aeabi_unwind_cpp_pr1
+ .text          0x00005d7c      0x1a8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+                0x00005edc                ___Unwind_ForcedUnwind
+                0x00005d98                __gnu_Unwind_Save_VFP
+                0x00005eb8                _Unwind_Resume_or_Rethrow
+                0x00005eb8                ___Unwind_Resume_or_Rethrow
+                0x00005f00                _Unwind_Backtrace
+                0x00005d7c                __restore_core_regs
+                0x00005db8                __gnu_Unwind_Save_VFP_D_16_to_31
+                0x00005da8                __gnu_Unwind_Save_VFP_D
+                0x00005f00                ___Unwind_Backtrace
+                0x00005e70                ___Unwind_RaiseException
+                0x00005e94                ___Unwind_Resume
+                0x00005dc0                __gnu_Unwind_Restore_WMMXD
+                0x00005d90                __gnu_Unwind_Restore_VFP
+                0x00005e94                _Unwind_Resume
+                0x00005da0                __gnu_Unwind_Restore_VFP_D
+                0x00005db0                __gnu_Unwind_Restore_VFP_D_16_to_31
+                0x00005e70                _Unwind_RaiseException
+                0x00005d7c                restore_core_regs
+                0x00005e5c                __gnu_Unwind_Save_WMMXC
+                0x00005e48                __gnu_Unwind_Restore_WMMXC
+                0x00005edc                _Unwind_ForcedUnwind
+                0x00005e04                __gnu_Unwind_Save_WMMXD
+ .text          0x00005f24      0x484 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+                0x00005fc4                _Unwind_GetRegionStart
+                0x00005ff0                __gnu_unwind_execute
+                0x00005f7c                _Unwind_GetTextRelBase
+                0x00005f8c                _Unwind_GetLanguageSpecificData
+                0x00006368                __gnu_unwind_frame
+                0x00005f84                _Unwind_GetDataRelBase
+ .text          0x000063a8      0x47c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+                0x000063a8                __divdi3
+ .text          0x00006824      0x40c c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+                0x00006824                __udivdi3
+ .text          0x00006c30       0xc4 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+                0x00006c30                __udivsi3
+                0x00006c30                __aeabi_uidiv
+                0x00006cdc                __aeabi_uidivmod
+ .text          0x00006cf4       0x10 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+                0x00006cf4                __div0
  *(.gnu.warning)
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
@@ -600,34 +594,34 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .fini
  *(.fini)
-                0x00006e1c                PROVIDE (__etext, .)
-                0x00006e1c                PROVIDE (_etext, .)
-                0x00006e1c                PROVIDE (etext, .)
+                0x00006d04                PROVIDE (__etext, .)
+                0x00006d04                PROVIDE (_etext, .)
+                0x00006d04                PROVIDE (etext, .)
 
-.rodata         0x00006e1c      0x698
+.rodata         0x00006d04      0x664
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00006e1c      0x4fc debug\ouyaFace_platform.os
- .rodata        0x00007318       0x80 debug\ouyaFace_register.os
+ .rodata        0x00006d04      0x4c8 debug\ouyaFace_platform.os
+ .rodata        0x000071cc       0x80 debug\ouyaFace_register.os
  .rodata.str1.4
-                0x00007398      0x11c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
+                0x0000724c      0x11c C:\marmalade\6.2\s3e\edk\lib\android\libedk.a(IwDebug.o)
                                 0x120 (size before relaxing)
 
 .rodata1
  *(.rodata1)
 
-.ARM.extab      0x000074b4       0x24
+.ARM.extab      0x00007368       0x24
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x000074b4       0x24 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
-                0x000074d8                __exidx_start = .
+ .ARM.extab     0x00007368       0x24 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+                0x0000738c                __exidx_start = .
 
-.ARM.exidx      0x000074d8       0xf8
+.ARM.exidx      0x0000738c       0xf8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x000074d8       0x10 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .ARM.exidx     0x000074e8       0xa0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .ARM.exidx     0x00007588       0x38 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .ARM.exidx     0x000075c0        0x8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .ARM.exidx     0x000075c8        0x8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
-                0x000075d0                __exidx_end = .
+ .ARM.exidx     0x0000738c       0x10 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .ARM.exidx     0x0000739c       0xa0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .ARM.exidx     0x0000743c       0x38 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .ARM.exidx     0x00007474        0x8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0000747c        0x8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+                0x00007484                __exidx_end = .
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -637,7 +631,7 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .gcc_except_table
  *(.gcc_except_table .gcc_except_table.*)
-                0x000075d0                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
+                0x00007484                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
                 0x00008dec                . = (0x1000 DATA_SEGMENT_ALIGN 0x1000)
 
 .eh_frame
@@ -779,139 +773,139 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x3d0
+.debug_aranges  0x00000000      0x3c0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000      0x1d8 debug\ouyaFace_platform.os
+                0x00000000      0x1c8 debug\ouyaFace_platform.os
  .debug_aranges
-                0x000001d8       0xa0 debug\ouyaFace.os
+                0x000001c8       0xa0 debug\ouyaFace.os
  .debug_aranges
-                0x00000278       0x38 debug\ouyaFace_register.os
+                0x00000268       0x38 debug\ouyaFace_register.os
  .debug_aranges
-                0x000002b0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+                0x000002a0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
  .debug_aranges
-                0x000002d0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+                0x000002c0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
  .debug_aranges
-                0x000002f0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+                0x000002e0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
  .debug_aranges
-                0x00000310       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+                0x00000300       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
  .debug_aranges
-                0x00000330       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+                0x00000320       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
  .debug_aranges
-                0x00000350       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+                0x00000340       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
  .debug_aranges
-                0x00000370       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+                0x00000360       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
  .debug_aranges
-                0x00000390       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+                0x00000380       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
  .debug_aranges
-                0x000003b0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+                0x000003a0       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
 
 .debug_pubnames
-                0x00000000      0xaa5
+                0x00000000      0xa5b
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000      0x5e7 debug\ouyaFace_platform.os
+                0x00000000      0x59d debug\ouyaFace_platform.os
  .debug_pubnames
-                0x000005e7      0x1d2 debug\ouyaFace.os
+                0x0000059d      0x1d2 debug\ouyaFace.os
  .debug_pubnames
-                0x000007b9       0x3a debug\ouyaFace_register.os
+                0x0000076f       0x3a debug\ouyaFace_register.os
  .debug_pubnames
-                0x000007f3       0x45 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+                0x000007a9       0x45 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
  .debug_pubnames
-                0x00000838      0x177 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+                0x000007ee      0x177 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
  .debug_pubnames
-                0x000009af       0xb7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+                0x00000965       0xb7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
  .debug_pubnames
-                0x00000a66       0x1f c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+                0x00000a1c       0x1f c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
  .debug_pubnames
-                0x00000a85       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+                0x00000a3b       0x20 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
 
-.debug_info     0x00000000     0xa0c4
+.debug_info     0x00000000     0xa033
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x70c9 debug\ouyaFace_platform.os
- .debug_info    0x000070c9      0x443 debug\ouyaFace.os
- .debug_info    0x0000750c      0x153 debug\ouyaFace_register.os
- .debug_info    0x0000765f       0xd3 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
- .debug_info    0x00007732       0xde c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_info    0x00007810     0x1424 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_info    0x00008c34       0xd7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
- .debug_info    0x00008d0b      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_info    0x00009341      0x606 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_info    0x00009947      0x5cb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
- .debug_info    0x00009f12       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
- .debug_info    0x00009feb       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+ .debug_info    0x00000000     0x7008 debug\ouyaFace_platform.os
+ .debug_info    0x00007008      0x473 debug\ouyaFace.os
+ .debug_info    0x0000747b      0x153 debug\ouyaFace_register.os
+ .debug_info    0x000075ce       0xd3 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+ .debug_info    0x000076a1       0xde c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_info    0x0000777f     0x1424 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_info    0x00008ba3       0xd7 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+ .debug_info    0x00008c7a      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_info    0x000092b0      0x606 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_info    0x000098b6      0x5cb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_info    0x00009e81       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+ .debug_info    0x00009f5a       0xd9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
 
-.debug_abbrev   0x00000000      0xe70
+.debug_abbrev   0x00000000      0xe88
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x2ea debug\ouyaFace_platform.os
- .debug_abbrev  0x000002ea      0x11e debug\ouyaFace.os
- .debug_abbrev  0x00000408       0xdb debug\ouyaFace_register.os
- .debug_abbrev  0x000004e3       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
- .debug_abbrev  0x000004f7       0x6a c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_abbrev  0x00000561      0x3bb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_abbrev  0x0000091c       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
- .debug_abbrev  0x00000930      0x220 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_abbrev  0x00000b50      0x18b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_abbrev  0x00000cdb      0x16d c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
- .debug_abbrev  0x00000e48       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
- .debug_abbrev  0x00000e5c       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+ .debug_abbrev  0x000002ea      0x136 debug\ouyaFace.os
+ .debug_abbrev  0x00000420       0xdb debug\ouyaFace_register.os
+ .debug_abbrev  0x000004fb       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+ .debug_abbrev  0x0000050f       0x6a c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_abbrev  0x00000579      0x3bb c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_abbrev  0x00000934       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+ .debug_abbrev  0x00000948      0x220 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_abbrev  0x00000b68      0x18b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_abbrev  0x00000cf3      0x16d c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_abbrev  0x00000e60       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00000e74       0x14 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
 
-.debug_line     0x00000000     0x15b0
+.debug_line     0x00000000     0x1584
  *(.debug_line)
- .debug_line    0x00000000      0x736 debug\ouyaFace_platform.os
- .debug_line    0x00000736      0x1c9 debug\ouyaFace.os
- .debug_line    0x000008ff       0xd3 debug\ouyaFace_register.os
- .debug_line    0x000009d2       0x83 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
- .debug_line    0x00000a55       0x89 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_line    0x00000ade      0x4b0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_line    0x00000f8e       0xcf c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
- .debug_line    0x0000105d      0x1b0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_line    0x0000120d      0x140 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_line    0x0000134d      0x130 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
- .debug_line    0x0000147d       0xaa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
- .debug_line    0x00001527       0x89 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
+ .debug_line    0x00000000      0x706 debug\ouyaFace_platform.os
+ .debug_line    0x00000706      0x1cd debug\ouyaFace.os
+ .debug_line    0x000008d3       0xd3 debug\ouyaFace_register.os
+ .debug_line    0x000009a6       0x83 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_aeabi_ldivmod.o)
+ .debug_line    0x00000a29       0x89 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_line    0x00000ab2      0x4b0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_line    0x00000f62       0xcf c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(libunwind.o)
+ .debug_line    0x00001031      0x1b0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_line    0x000011e1      0x140 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_line    0x00001321      0x130 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_line    0x00001451       0xaa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+ .debug_line    0x000014fb       0x89 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_dvmd_lnx.o)
 
-.debug_frame    0x00000000      0xd30
+.debug_frame    0x00000000      0xcf8
  *(.debug_frame)
- .debug_frame   0x00000000      0x65c debug\ouyaFace_platform.os
- .debug_frame   0x0000065c      0x1ec debug\ouyaFace.os
- .debug_frame   0x00000848       0x84 debug\ouyaFace_register.os
- .debug_frame   0x000008cc       0x60 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_frame   0x0000092c      0x248 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_frame   0x00000b74      0x108 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_frame   0x00000c7c       0x44 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_frame   0x00000cc0       0x48 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
- .debug_frame   0x00000d08       0x28 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000000      0x624 debug\ouyaFace_platform.os
+ .debug_frame   0x00000624      0x1ec debug\ouyaFace.os
+ .debug_frame   0x00000810       0x84 debug\ouyaFace_register.os
+ .debug_frame   0x00000894       0x60 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_frame   0x000008f4      0x248 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_frame   0x00000b3c      0x108 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_frame   0x00000c44       0x44 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_frame   0x00000c88       0x48 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_frame   0x00000cd0       0x28 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivsi3.o)
 
-.debug_str      0x00000000     0x629f
+.debug_str      0x00000000     0x61d4
  *(.debug_str)
- .debug_str     0x00000000     0x5682 debug\ouyaFace_platform.os
-                               0x5831 (size before relaxing)
- .debug_str     0x00005682       0x91 debug\ouyaFace.os
-                                0x422 (size before relaxing)
- .debug_str     0x00005713       0xa4 debug\ouyaFace_register.os
+ .debug_str     0x00000000     0x55b7 debug\ouyaFace_platform.os
+                               0x5761 (size before relaxing)
+ .debug_str     0x000055b7       0x91 debug\ouyaFace.os
+                                0x429 (size before relaxing)
+ .debug_str     0x00005648       0xa4 debug\ouyaFace_register.os
                                 0x1ca (size before relaxing)
- .debug_str     0x000057b7       0x97 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_str     0x000056ec       0x97 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
                                  0xbc (size before relaxing)
- .debug_str     0x0000584e      0x7e9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_str     0x00005783      0x7e9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
                                 0x8d2 (size before relaxing)
- .debug_str     0x00006037      0x11b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_str     0x00005f6c      0x11b c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
                                 0x438 (size before relaxing)
- .debug_str     0x00006152      0x143 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_str     0x00006087      0x143 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
                                 0x1f3 (size before relaxing)
- .debug_str     0x00006295        0xa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_str     0x000061ca        0xa c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
                                 0x1f4 (size before relaxing)
 
-.debug_loc      0x00000000     0x2e0b
+.debug_loc      0x00000000     0x2db3
  *(.debug_loc)
- .debug_loc     0x00000000      0x9c1 debug\ouyaFace_platform.os
- .debug_loc     0x000009c1      0x2a4 debug\ouyaFace.os
- .debug_loc     0x00000c65       0x99 debug\ouyaFace_register.os
- .debug_loc     0x00000cfe      0x120 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
- .debug_loc     0x00000e1e      0xfef c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_loc     0x00001e0d      0x2f9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_loc     0x00002106      0x6cf c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_loc     0x000027d5      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_loc     0x00000000      0x969 debug\ouyaFace_platform.os
+ .debug_loc     0x00000969      0x2a4 debug\ouyaFace.os
+ .debug_loc     0x00000c0d       0x99 debug\ouyaFace_register.os
+ .debug_loc     0x00000ca6      0x120 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(bpabi.o)
+ .debug_loc     0x00000dc6      0xfef c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_loc     0x00001db5      0x2f9 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_loc     0x000020ae      0x6cf c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_loc     0x0000277d      0x636 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -931,15 +925,15 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x5d0
+.debug_ranges   0x00000000      0x5c0
  *(.debug_ranges)
- .debug_ranges  0x00000000      0x1c8 debug\ouyaFace_platform.os
- .debug_ranges  0x000001c8       0x90 debug\ouyaFace.os
- .debug_ranges  0x00000258       0x28 debug\ouyaFace_register.os
- .debug_ranges  0x00000280      0x1f8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
- .debug_ranges  0x00000478       0x30 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
- .debug_ranges  0x000004a8       0xa0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
- .debug_ranges  0x00000548       0x88 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
+ .debug_ranges  0x00000000      0x1b8 debug\ouyaFace_platform.os
+ .debug_ranges  0x000001b8       0x90 debug\ouyaFace.os
+ .debug_ranges  0x00000248       0x28 debug\ouyaFace_register.os
+ .debug_ranges  0x00000270      0x1f8 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(unwind-arm.o)
+ .debug_ranges  0x00000468       0x30 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(pr-support.o)
+ .debug_ranges  0x00000498       0xa0 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_divdi3.o)
+ .debug_ranges  0x00000538       0x88 c:/android-ndk/toolchains/arm-linux-androideabi-4.4.3/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.4.3\libgcc.a(_udivdi3.o)
 
 .gnu.attributes
  *(.gnu.attributes)
