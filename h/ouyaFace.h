@@ -23,14 +23,26 @@
  */
 enum  OuyaControllerEvent
 {
-  OUYA_CONTROLLER_MOTION_EVENT, // analog stick action
+  OUYA_CONTROLLER_AXIS_EVENT, // analog stick action, including triggers
   OUYA_CONTROLLER_BUTTON_EVENT, // buttons
   kNumOuyaControllerEvents
 };
 
 /*
+ * @brief  Controllers axis id values.
+ */
+enum  OuyaControllerAxisId
+{
+  OUYA_CONTROLLER_AXIS_LEFT_X = 0,
+  OUYA_CONTROLLER_AXIS_LEFT_Y = 1,
+  OUYA_CONTROLLER_AXIS_RIGHT_X = 11,
+  OUYA_CONTROLLER_AXIS_RIGHT_Y = 14,
+  OUYA_CONTROLLER_AXIS_LEFT_TRIGGER = 17,
+  OUYA_CONTROLLER_AXIS_RIGHT_TRIGGER = 18,
+};
+
+/*
  * @brief Controller button id values.
- * @note  the use of AXIS_L2/R2 is supported; BUTTON_L2/R2 is deprecated.
  */
 enum  OuyaControllerButtonId
 {
@@ -55,16 +67,12 @@ enum  OuyaControllerButtonId
 /*
  * @brief System data of an OUYA_CONTROLLER_MOTION_EVENT
  */
-struct  OuyaControllerMotionEvent
+struct  OuyaControllerAxisEvent
 {
   uint32  controllerId;
   uint32  playerId;
-  float   xLeft;
-  float   yLeft;
-  float   xRight;
-  float   yRight;
-  float   trigLeft;
-  float   trigRight;
+  uint32  axisId;
+  float   axisValue;
 };
 
 /*
@@ -94,14 +102,14 @@ enum  OuyaFacadeError
  */
 struct  OuyaFacadeGamerUUIDResult
 {
-  int         error;
+  int32       error;
   const char*	pGamerUUID;
 };
 
 struct  OuyaFacadeReceipt
 {
   const char* pProductId;
-  int         priceInCents;
+  int32       priceInCents;
   uint64      purchaseDate;
   uint64      generatedDate;
 };
@@ -111,8 +119,8 @@ struct  OuyaFacadeReceipt
  */
 struct  OuyaFacadeReceiptsResult
 {
-  int                       error;
-  int                       numReceipts;
+  int32                     error;
+  int32                     numReceipts;
   const OuyaFacadeReceipt*  parReceipt;
 };
 
@@ -120,7 +128,7 @@ struct  OuyaFacadeProduct
 {
   const char* pProductId;
   const char* pName;
-  int         priceInCents;
+  int32       priceInCents;
 };
 
 /*
@@ -128,8 +136,8 @@ struct  OuyaFacadeProduct
  */
 struct  OuyaFacadeProductListResult
 {
-  int                       error;
-  int                       numProducts;
+  int32                     error;
+  int32                     numProducts;
   const OuyaFacadeProduct*  parProduct;
 };
 
@@ -138,7 +146,7 @@ struct  OuyaFacadeProductListResult
  */
 struct	OuyaFacadePurchaseResult
 {
-  int               error;
+  int32             error;
   OuyaFacadeProduct productPurchased;
 };
 // \cond HIDDEN_DEFINES

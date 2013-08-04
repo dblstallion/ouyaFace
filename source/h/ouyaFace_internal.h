@@ -46,9 +46,9 @@ void ouyaInit_platform(const char* pDeveloperId, const char* pApplicationKey);
 
 void ouyaTerm_platform();
 
-int ouyaFacadeIsInitialised_platform();
+int32 ouyaFacadeIsInitialised_platform();
 
-int ouyaFacadeIsRunningOnOUYAHardware_platform();
+int32 ouyaFacadeIsRunningOnOUYAHardware_platform();
 
 void ouyaFacadeGetGameData_platform(const char* pKey, char* pBuffer, int bufferSize);
 
@@ -68,7 +68,7 @@ s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallba
 
 //s3eResult ouyaControllerUnRegister_platform(OuyaControllerEvent type, s3eCallback pCallback);
 
-int ouyaControllerGetButtonState_platform(uint32 controller, uint32 button);
+int32 ouyaControllerGetButtonState_platform(uint32 controller, uint32 button);
 
 float ouyaControllerGetAxis_platform(uint32 controller, uint32 axis);
 

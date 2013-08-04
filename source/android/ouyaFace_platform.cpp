@@ -39,7 +39,7 @@ static jmethodID g_ouyaControllerUnRegister;
 static jmethodID g_ouyaControllerGetButtonState;
 static jmethodID g_ouyaControllerGetAxis;
 
-void  ouyaFaceOnGenericMotionEvent(JNIEnv* env, jobject obj, jint deviceId, jint playerId, jfloat lx, jfloat ly, jfloat rx, jfloat ry, jfloat lTrig, jfloat rTrig);
+void  ouyaFaceOnGenericMotionEvent(JNIEnv* env, jobject obj, jint deviceId, jint playerId, jint axisId, jfloat axisValue);
 void  ouyaFaceOnKeyEvent(JNIEnv* env, jobject obj, jint deviceId, jint playerId, jint keyCode, jint action);
     
 void	ouyaFaceOnGamerUUIDResult(JNIEnv* env, jobject obj, jint error, jstring uuid);
@@ -47,11 +47,9 @@ void	ouyaFaceOnReceiptsResult(JNIEnv* env, jobject obj, jint error, jobjectArray
 void	ouyaFaceOnProductListResult(JNIEnv* env, jobject obj, jint error, jobjectArray products);
 void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject product);
 
-//void(* s3eEdkCallbackCompleteFn)(uint32 extID, int32 notification, void *systemData, void *instance, int32 returnCode, void *completeData)  
-
 static const JNINativeMethod karOuyaFaceNative[] =
 {
-  { "onGenericMotionEvent", "(IIFFFFFF)V", (void*)&ouyaFaceOnGenericMotionEvent },
+  { "onGenericMotionEvent", "(IIIF)V", (void*)&ouyaFaceOnGenericMotionEvent },
   { "onKeyEvent", "(IIII)V", (void*)&ouyaFaceOnKeyEvent },
   { "onGamerUUIDResult", "(ILjava/lang/String;)V", (void*)&ouyaFaceOnGamerUUIDResult },
   { "onReceiptsResult", "(I[Ltv/ouya/console/api/Receipt;)V", (void*)&ouyaFaceOnReceiptsResult },
@@ -109,21 +107,17 @@ static void  ouyaFacadePurchaseCompleteCallback(uint32 extID, int32 notification
 }
 
 void ouyaFaceOnGenericMotionEvent(JNIEnv* env, jobject obj, jint deviceId,
-  jint playerId, jfloat lx, jfloat ly, jfloat rx, jfloat ry, jfloat lTrig, jfloat rTrig)
+  jint playerId, jint axisId, jfloat axisValue)
 {
-  OuyaControllerMotionEvent e =
+  OuyaControllerAxisEvent e =
   {
     deviceId,
     playerId,
-    lx,
-    ly,
-    rx,
-    ry,
-    lTrig,
-    rTrig
+    axisId,
+    axisValue
   };
 
-  s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_CONTROLLER_MOTION_EVENT,
+  s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_CONTROLLER_AXIS_EVENT,
     &e, sizeof(e), 0, false, 0, 0);
 }
 
@@ -421,7 +415,7 @@ void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject prod
   }
 
   s3eEdkCallbacksEnqueue(S3E_EXT_OUYAFACE_HASH, OUYA_FACADE_PURCHASE_EVENT,
-    &r, sizeof(r), 0, true, 0, 0);
+    &r, sizeof(r), 0, true, ouyaFacadePurchaseCompleteCallback, 0);
 }
 
 
@@ -557,13 +551,13 @@ void ouyaTerm_platform()
     env->CallVoidMethod(g_Obj, g_ouyaTerm);
 }
 
-int ouyaFacadeIsInitialised_platform()
+int32 ouyaFacadeIsInitialised_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (int)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsInitialised);
 }
 
-int ouyaFacadeIsRunningOnOUYAHardware_platform()
+int32 ouyaFacadeIsRunningOnOUYAHardware_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (int)env->CallBooleanMethod(g_Obj, g_ouyaFacadeIsRunningOnOUYAHardware);
@@ -714,7 +708,7 @@ s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallba
 //  return result;
 //}
 
-int ouyaControllerGetButtonState_platform(uint32 controller, uint32 button)
+int32 ouyaControllerGetButtonState_platform(uint32 controller, uint32 button)
 {
   JNIEnv* env = s3eEdkJNIGetEnv();
   return (int)env->CallBooleanMethod(g_Obj, g_ouyaControllerGetButtonState, controller, button);

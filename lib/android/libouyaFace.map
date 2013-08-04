@@ -199,27 +199,29 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
  .text._Z18ouyaFaceOnKeyEventP7_JNIEnvP8_jobjectiiii
                 0x000008ac       0x54 release\ouyaFace_platform.os
                 0x000008ac                ouyaFaceOnKeyEvent(_JNIEnv*, _jobject*, int, int, int, int)
- .text._Z28ouyaFaceOnGenericMotionEventP7_JNIEnvP8_jobjectiiffffff
-                0x00000900       0x74 release\ouyaFace_platform.os
-                0x00000900                ouyaFaceOnGenericMotionEvent(_JNIEnv*, _jobject*, int, int, float, float, float, float, float, float)
+ .text._Z28ouyaFaceOnGenericMotionEventP7_JNIEnvP8_jobjectiiif
+                0x00000900       0x54 release\ouyaFace_platform.os
+                0x00000900                ouyaFaceOnGenericMotionEvent(_JNIEnv*, _jobject*, int, int, int, float)
+ .text._ZL34ouyaFacadePurchaseCompleteCallbackjiPvS_iS_
+                0x00000954       0x1c release\ouyaFace_platform.os
  .text._ZL37ouyaFacadeProductListCompleteCallbackjiPvS_iS_
-                0x00000974       0x58 release\ouyaFace_platform.os
+                0x00000970       0x58 release\ouyaFace_platform.os
  .text._ZL34ouyaFacadeReceiptsCompleteCallbackjiPvS_iS_
-                0x000009cc       0x48 release\ouyaFace_platform.os
+                0x000009c8       0x48 release\ouyaFace_platform.os
  .text._ZL26ouyaFacadeCompleteCallbackjiPvS_iS_
-                0x00000a14        0x8 release\ouyaFace_platform.os
+                0x00000a10        0x8 release\ouyaFace_platform.os
  .text._Z27ouyaFaceOnProductListResultP7_JNIEnvP8_jobjectiP13_jobjectArray
-                0x00000a1c      0x2fc release\ouyaFace_platform.os
-                0x00000a1c                ouyaFaceOnProductListResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
+                0x00000a18      0x2fc release\ouyaFace_platform.os
+                0x00000a18                ouyaFaceOnProductListResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
  .text._Z24ouyaFaceOnReceiptsResultP7_JNIEnvP8_jobjectiP13_jobjectArray
-                0x00000d18      0x360 release\ouyaFace_platform.os
-                0x00000d18                ouyaFaceOnReceiptsResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
+                0x00000d14      0x360 release\ouyaFace_platform.os
+                0x00000d14                ouyaFaceOnReceiptsResult(_JNIEnv*, _jobject*, int, _jobjectArray*)
  .text._Z25ouyaFaceOnGamerUUIDResultP7_JNIEnvP8_jobjectiP8_jstring
-                0x00001078      0x110 release\ouyaFace_platform.os
-                0x00001078                ouyaFaceOnGamerUUIDResult(_JNIEnv*, _jobject*, int, _jstring*)
+                0x00001074      0x110 release\ouyaFace_platform.os
+                0x00001074                ouyaFaceOnGamerUUIDResult(_JNIEnv*, _jobject*, int, _jstring*)
  .text._Z24ouyaFaceOnPurchaseResultP7_JNIEnvP8_jobjectiS2_
-                0x00001188      0x280 release\ouyaFace_platform.os
-                0x00001188                ouyaFaceOnPurchaseResult(_JNIEnv*, _jobject*, int, _jobject*)
+                0x00001184      0x284 release\ouyaFace_platform.os
+                0x00001184                ouyaFaceOnPurchaseResult(_JNIEnv*, _jobject*, int, _jobject*)
  .text._Z37ouyaFacadeRequestProductList_platformPPKciPFiPvS2_ES2_
                 0x00001408      0x154 release\ouyaFace_platform.os
                 0x00001408                ouyaFacadeRequestProductList_platform(char const**, int, int (*)(void*, void*), void*)
@@ -367,10 +369,10 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
                 0x0000245c                PROVIDE (_etext, .)
                 0x0000245c                PROVIDE (etext, .)
 
-.rodata         0x0000245c      0x3e0
+.rodata         0x0000245c      0x3dc
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x0000245c      0x3e0 release\ouyaFace_platform.os
+                0x0000245c      0x3dc release\ouyaFace_platform.os
  .rodata.str1.4
                 0x00000000        0xc release\ouyaFace_register.os
 
@@ -379,11 +381,11 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000283c                __exidx_start = .
+                0x00002838                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000283c                __exidx_end = .
+                0x00002838                __exidx_end = .
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -393,7 +395,7 @@ LOAD c:/android-ndk/platforms/android-9/arch-arm/usr/lib/crtend_so.o
 
 .gcc_except_table
  *(.gcc_except_table .gcc_except_table.*)
-                0x0000283c                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
+                0x00002838                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
                 0x00003e58                . = (0x1000 DATA_SEGMENT_ALIGN 0x1000)
 
 .eh_frame

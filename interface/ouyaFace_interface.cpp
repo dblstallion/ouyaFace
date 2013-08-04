@@ -15,8 +15,8 @@
  */
 typedef       void(*ouyaInit_t)(const char* pDeveloperId, const char* pApplicationKey);
 typedef       void(*ouyaTerm_t)();
-typedef        int(*ouyaFacadeIsInitialised_t)();
-typedef        int(*ouyaFacadeIsRunningOnOUYAHardware_t)();
+typedef      int32(*ouyaFacadeIsInitialised_t)();
+typedef      int32(*ouyaFacadeIsRunningOnOUYAHardware_t)();
 typedef       void(*ouyaFacadeGetGameData_t)(const char* pKey, char* pBuffer, int bufferSize);
 typedef       void(*ouyaFacadePutGameData_t)(const char* pKey, const char* pValue);
 typedef       void(*ouyaFacadeSetTestMode_t)();
@@ -26,7 +26,7 @@ typedef  s3eResult(*ouyaFacadeRequestProductList_t)(const char** parPurchasable,
 typedef  s3eResult(*ouyaFacadeRequestPurchase_t)(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerRegister_t)(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerUnRegister_t)(OuyaControllerEvent type, s3eCallback pCallback);
-typedef        int(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
+typedef      int32(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
 typedef      float(*ouyaControllerGetAxis_t)(uint32 controller, uint32 axis);
 
 /**
@@ -138,7 +138,7 @@ void ouyaTerm()
     return;
 }
 
-int ouyaFacadeIsInitialised()
+int32 ouyaFacadeIsInitialised()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[2] func: ouyaFacadeIsInitialised"));
 
@@ -160,7 +160,7 @@ int ouyaFacadeIsInitialised()
     return ret;
 }
 
-int ouyaFacadeIsRunningOnOUYAHardware()
+int32 ouyaFacadeIsRunningOnOUYAHardware()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[3] func: ouyaFacadeIsRunningOnOUYAHardware"));
 
@@ -380,7 +380,7 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
     return ret;
 }
 
-int ouyaControllerGetButtonState(uint32 controller, uint32 button)
+int32 ouyaControllerGetButtonState(uint32 controller, uint32 button)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[13] func: ouyaControllerGetButtonState"));
 
