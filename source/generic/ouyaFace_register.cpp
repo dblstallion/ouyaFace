@@ -36,8 +36,99 @@ static void ouyaTerm_wrap()
     s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaTerm, 0);
 }
 
+static int ouyaFacadeIsInitialised_wrap()
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeIsInitialised"));
+    return (int)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeIsInitialised, 0);
+}
+
+static int ouyaFacadeIsRunningOnOUYAHardware_wrap()
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeIsRunningOnOUYAHardware"));
+    return (int)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeIsRunningOnOUYAHardware, 0);
+}
+
+static void ouyaFacadeGetGameData_wrap(const char* pKey, char* pBuffer, int bufferSize)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeGetGameData"));
+    s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeGetGameData, 3, pKey, pBuffer, bufferSize);
+}
+
+static void ouyaFacadePutGameData_wrap(const char* pKey, const char* pValue)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadePutGameData"));
+    s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadePutGameData, 2, pKey, pValue);
+}
+
+static void ouyaFacadeSetTestMode_wrap()
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeSetTestMode"));
+    s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeSetTestMode, 0);
+}
+
+static s3eResult ouyaFacadeRequestGamerUUID_wrap(s3eCallback pCallback, void* pUserData)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestGamerUUID"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestGamerUUID, 2, pCallback, pUserData);
+}
+
+static s3eResult ouyaFacadeRequestReceipts_wrap(s3eCallback pCallback, void* pUserData)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestReceipts"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestReceipts, 2, pCallback, pUserData);
+}
+
+static s3eResult ouyaFacadeRequestProductList_wrap(const char** parPurchasable, int numPurchasables, s3eCallback pCallback, void* pUserData)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestProductList"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestProductList, 4, parPurchasable, numPurchasables, pCallback, pUserData);
+}
+
+static s3eResult ouyaFacadeRequestPurchase_wrap(const char* pPurchasable, s3eCallback pCallback, void* pUserData)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestPurchase"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestPurchase, 3, pPurchasable, pCallback, pUserData);
+}
+
+static s3eResult ouyaControllerRegister_wrap(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaControllerRegister"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaControllerRegister, 3, type, pCallback, pUserData);
+}
+
+static s3eResult ouyaControllerUnRegister_wrap(OuyaControllerEvent type, s3eCallback pCallback)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaControllerUnRegister"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaControllerUnRegister, 2, type, pCallback);
+}
+
+static int ouyaControllerGetButtonState_wrap(uint32 controller, uint32 button)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaControllerGetButtonState"));
+    return (int)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaControllerGetButtonState, 2, controller, button);
+}
+
+static float ouyaControllerGetAxis_wrap(uint32 controller, uint32 axis)
+{
+    IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaControllerGetAxis"));
+    return (float)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaControllerGetAxis, 2, controller, axis);
+}
+
 #define ouyaInit ouyaInit_wrap
 #define ouyaTerm ouyaTerm_wrap
+#define ouyaFacadeIsInitialised ouyaFacadeIsInitialised_wrap
+#define ouyaFacadeIsRunningOnOUYAHardware ouyaFacadeIsRunningOnOUYAHardware_wrap
+#define ouyaFacadeGetGameData ouyaFacadeGetGameData_wrap
+#define ouyaFacadePutGameData ouyaFacadePutGameData_wrap
+#define ouyaFacadeSetTestMode ouyaFacadeSetTestMode_wrap
+#define ouyaFacadeRequestGamerUUID ouyaFacadeRequestGamerUUID_wrap
+#define ouyaFacadeRequestReceipts ouyaFacadeRequestReceipts_wrap
+#define ouyaFacadeRequestProductList ouyaFacadeRequestProductList_wrap
+#define ouyaFacadeRequestPurchase ouyaFacadeRequestPurchase_wrap
+#define ouyaControllerRegister ouyaControllerRegister_wrap
+#define ouyaControllerUnRegister ouyaControllerUnRegister_wrap
+#define ouyaControllerGetButtonState ouyaControllerGetButtonState_wrap
+#define ouyaControllerGetAxis ouyaControllerGetAxis_wrap
 
 #endif
 

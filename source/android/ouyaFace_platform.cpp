@@ -15,7 +15,7 @@
 
 enum  OuyaFacadeEvent
 {
-  OUYA_FACADE_GAMER_UUID_EVENT,
+  OUYA_FACADE_GAMER_UUID_EVENT = kNumOuyaControllerEvents,
   OUYA_FACADE_RECEIPTS_EVENT,
   OUYA_FACADE_PRODUCT_LIST_EVENT,
   OUYA_FACADE_PURCHASE_EVENT,
@@ -51,12 +51,12 @@ void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject prod
 
 static const JNINativeMethod karOuyaFaceNative[] =
 {
-  { "ouyaFaceOnGenericMotionEvent", "(IIFFFFFF)V", (void*)&ouyaFaceOnGenericMotionEvent },
-  { "ouyaFaceOnKeyEvent", "(IIII)V", (void*)&ouyaFaceOnKeyEvent },
-  { "ouyaFaceOnGamerUUIDResult", "(ILjava/lang/String;)V", (void*)&ouyaFaceOnGamerUUIDResult },
-  { "ouyaFaceOnReceiptsResult", "(I[Ltv/ouya/console/api/Receipt;)V", (void*)&ouyaFaceOnReceiptsResult },
-  { "ouyaFaceOnProductListResult", "(I[Ltv/ouya/console/api/Product;)V", (void*)&ouyaFaceOnProductListResult },
-  { "ouyaFaceOnPurchaseResult", "(ILtv/ouya/console/api/Product;)V", (void*)&ouyaFaceOnPurchaseResult },
+  { "onGenericMotionEvent", "(IIFFFFFF)V", (void*)&ouyaFaceOnGenericMotionEvent },
+  { "onKeyEvent", "(IIII)V", (void*)&ouyaFaceOnKeyEvent },
+  { "onGamerUUIDResult", "(ILjava/lang/String;)V", (void*)&ouyaFaceOnGamerUUIDResult },
+  { "onReceiptsResult", "(I[Ltv/ouya/console/api/Receipt;)V", (void*)&ouyaFaceOnReceiptsResult },
+  { "onProductListResult", "(I[Ltv/ouya/console/api/Product;)V", (void*)&ouyaFaceOnProductListResult },
+  { "onPurchaseResult", "(ILtv/ouya/console/api/Product;)V", (void*)&ouyaFaceOnPurchaseResult },
 };
 
 static void  ouyaFacadeCompleteCallback(uint32 extID, int32 notification,
@@ -158,6 +158,7 @@ void	ouyaFaceOnGamerUUIDResult(JNIEnv* env, jobject obj, jint error, jstring uui
   if(error == OUYA_FACADE_ERROR_NONE)
   {
     const char* pUUIDChars(env->GetStringUTFChars(uuid, false));
+    IwAssert(OUYAFACE, pUUIDChars != 0);
   
     jsize uuidSize(env->GetStringUTFLength(uuid) + 1);
     pMem = s3eEdkMallocOS(uuidSize);
@@ -196,27 +197,44 @@ void	ouyaFaceOnReceiptsResult(JNIEnv* env, jobject obj, jint error, jobjectArray
     r.parReceipt = parReceipt;
 
     jclass    cReceipt = env->FindClass("tv/ouya/console/api/Receipt");
+    IwAssert(OUYAFACE, cReceipt != 0);
+
     jmethodID mReceiptGetIdentifier = env->GetMethodID(cReceipt, "getIdentifier",
       "()Ljava/lang/string");
+    IwAssert(OUYAFACE, mReceiptGetIdentifier != 0);
+
     jmethodID mReceiptGetPriceInCents = env->GetMethodID(cReceipt, "getPriceInCents",
       "()I");
+    IwAssert(OUYAFACE, mReceiptGetPriceInCents != 0);
+
     jmethodID mReceiptGetPurchaseDate = env->GetMethodID(cReceipt, "getPurchaseDate",
       "()Ljava/util/Date");
+    IwAssert(OUYAFACE, mReceiptGetPurchaseDate != 0);
+
     jmethodID mReceiptGetGeneratedDate = env->GetMethodID(cReceipt, "getGeneratedDate",
       "()Ljava/util/Date");
+    IwAssert(OUYAFACE, mReceiptGetPurchaseDate != 0);
 
     jclass    cDate(env->FindClass("java/util/Date"));
+    IwAssert(OUYAFACE, cDate != 0);
+
     jmethodID mDateGetTime(env->GetMethodID(cDate, "getTime", "()J"));
+    IwAssert(OUYAFACE, mDateGetTime != 0);
+
     jobject   jDate;
 
     for(int i = 0; i < numReceipts; ++i)
     {
       jobject jReceipt = env->GetObjectArrayElement(receipts, i);
+      IwAssert(OUYAFACE, jReceipt != 0);
 
       jstring jProductId = (jstring)env->CallObjectMethod(jReceipt,
         mReceiptGetIdentifier);
+      IwAssert(OUYAFACE, jProductId != 0);
 
       const char* pProductId(env->GetStringUTFChars(jProductId, false));
+      IwAssert(OUYAFACE, pProductId != 0);
+
       jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
       pMem = s3eEdkMallocOS(productIdSize);
       memcpy(pMem, pProductId, productIdSize);
@@ -230,10 +248,14 @@ void	ouyaFaceOnReceiptsResult(JNIEnv* env, jobject obj, jint error, jobjectArray
         mReceiptGetPriceInCents);
 
       jDate = env->CallObjectMethod(jReceipt, mReceiptGetPurchaseDate);
+      IwAssert(OUYAFACE, jDate != 0);
+
       parReceipt[i].purchaseDate = env->CallLongMethod(jDate, mDateGetTime);
       env->DeleteLocalRef(jDate);
 
       jDate = env->CallObjectMethod(jReceipt, mReceiptGetGeneratedDate);
+      IwAssert(OUYAFACE, jDate != 0);
+
       parReceipt[i].generatedDate = env->CallLongMethod(jDate, mDateGetTime);
       env->DeleteLocalRef(jDate);
     }
@@ -270,19 +292,31 @@ void	ouyaFaceOnProductListResult(JNIEnv* env, jobject obj, jint error, jobjectAr
     r.parProduct = parProduct;
   
     jclass    cProduct = env->FindClass("tv/ouya/console/api/Product");
+    IwAssert(OUYAFACE, cProduct != 0);
+
     jmethodID mProductGetName = env->GetMethodID(cProduct, "getName",
       "()Ljava/lang/string");
+    IwAssert(OUYAFACE, mProductGetName != 0);
+
     jmethodID mProductGetIdentifier = env->GetMethodID(cProduct, "getIdentifier",
       "()Ljava/lang/string");
+    IwAssert(OUYAFACE, mProductGetIdentifier != 0);
+
     jmethodID mProductGetPriceInCents = env->GetMethodID(cProduct, "getPriceInCents",
       "()I");
+    IwAssert(OUYAFACE, mProductGetPriceInCents != 0);
 
     for(int i = 0; i < arraySize; ++i)
     {
       jobject jProduct = env->GetObjectArrayElement(products, i);
+      IwAssert(OUYAFACE, jProduct != 0);
  
       jstring jName = (jstring)env->CallObjectMethod(jProduct, mProductGetName);
+      IwAssert(OUYAFACE, jName != 0);
+
       const char* pName(env->GetStringUTFChars(jName, false));
+      IwAssert(OUYAFACE, pName != 0);
+
       jsize nameSize(env->GetStringUTFLength(jName) + 1);
       pMem = s3eEdkMallocOS(nameSize);
       memcpy(pMem, pName, nameSize);
@@ -293,7 +327,11 @@ void	ouyaFaceOnProductListResult(JNIEnv* env, jobject obj, jint error, jobjectAr
       env->DeleteLocalRef(jName);
 
       jstring jProductId = (jstring)env->CallObjectMethod(jProduct, mProductGetIdentifier);
+      IwAssert(OUYAFACE, jProductId != 0);
+
       const char* pProductId(env->GetStringUTFChars(jProductId, false));
+      IwAssert(OUYAFACE, pProductId != 0);
+
       jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
       pMem = s3eEdkMallocOS(productIdSize);
       memcpy(pMem, pProductId, productIdSize);
@@ -330,18 +368,28 @@ void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject prod
   if(error == OUYA_FACADE_ERROR_NONE)
   {
     jclass    cProduct = env->FindClass("tv/ouya/console/api/Product");
+    IwAssert(OUYAFACE, cProduct != 0);
 
     jmethodID mProductGetName = env->GetMethodID(cProduct, "getName",
       "()Ljava/lang/string");
+    IwAssert(OUYAFACE, mProductGetName != 0);
+
     jmethodID mProductGetIdentifier = env->GetMethodID(cProduct, "getIdentifier",
       "()Ljava/lang/string");
+    IwAssert(OUYAFACE, mProductGetIdentifier != 0);
+
     jmethodID mProductGetPriceInCents = env->GetMethodID(cProduct, "getPriceInCents",
       "()I");
+    IwAssert(OUYAFACE, mProductGetPriceInCents != 0);
 
     void* pMem(0);
 
     jstring jName = (jstring)env->CallObjectMethod(product, mProductGetName);
+    IwAssert(OUYAFACE, jName != 0);
+
     const char* pName(env->GetStringUTFChars(jName, false));
+    IwAssert(OUYAFACE, pName != 0);
+
     jsize nameSize(env->GetStringUTFLength(jName) + 1);
     pMem = s3eEdkMallocOS(nameSize);
     memcpy(pMem, pName, nameSize);
@@ -352,7 +400,11 @@ void	ouyaFaceOnPurchaseResult(JNIEnv* env, jobject obj, jint error, jobject prod
     env->DeleteLocalRef(jName);
 
     jstring jProductId = (jstring)env->CallObjectMethod(product, mProductGetIdentifier);
+    IwAssert(OUYAFACE, jProductId != 0);
+
     const char* pProductId(env->GetStringUTFChars(jProductId, false));
+    IwAssert(OUYAFACE, pProductId != 0);
+
     jsize productIdSize(env->GetStringUTFLength(jProductId) + 1);
     pMem = s3eEdkMallocOS(productIdSize);
     memcpy(pMem, pProductId, productIdSize);
@@ -384,6 +436,12 @@ s3eResult ouyaFaceInit_platform()
     jclass cls = s3eEdkAndroidFindClass("ouyaFace");
     if (!cls)
         goto fail;
+
+    // register native callbacks
+    if (env->RegisterNatives(cls, karOuyaFaceNative, 6) < 0)
+    {
+        goto fail;
+    }
 
     // Get its constructor
     cons = env->GetMethodID(cls, "<init>", "()V");
@@ -456,12 +514,6 @@ s3eResult ouyaFaceInit_platform()
     if (!g_ouyaControllerGetAxis)
         goto fail;
 
-    // register native callbacks
-    if (env->RegisterNatives(cls, karOuyaFaceNative, 6))
-    {
-        goto fail;
-    }
-
     IwTrace(OUYAFACE, ("OUYAFACE init success"));
     g_Obj = env->NewGlobalRef(obj);
     env->DeleteLocalRef(obj);
@@ -491,7 +543,11 @@ void ouyaInit_platform(const char* pDeveloperId, const char* pApplicationKey)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     jstring pDeveloperId_jstr = env->NewStringUTF(pDeveloperId);
+    IwAssert(OUYAFACE, pDeveloperId_jstr != 0);
+
     jstring pApplicationKey_jstr = env->NewStringUTF(pApplicationKey);
+    IwAssert(OUYAFACE, pApplicationKey_jstr != 0);
+
     env->CallVoidMethod(g_Obj, g_ouyaInit, pDeveloperId_jstr, pApplicationKey_jstr);
 }
 
@@ -517,10 +573,16 @@ void ouyaFacadeGetGameData_platform(const char* pKey, char* pBuffer, int bufferS
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     jstring pKey_jstr = env->NewStringUTF(pKey);
+    IwAssert(OUYAFACE, pKey_jstr != 0);
+
     jstring	data_jstr = (jstring)env->CallObjectMethod(g_Obj, g_ouyaFacadeGetGameData, pKey_jstr, bufferSize);
+    IwAssert(OUYAFACE, data_jstr != 0);
+
     jsize   data_len = env->GetStringUTFLength(data_jstr);
 
     const char* pDataChars = env->GetStringUTFChars(data_jstr, false);
+    IwAssert(OUYAFACE, pDataChars != 0);
+
     if(bufferSize > data_len)
     {
       bufferSize = data_len;
@@ -537,7 +599,11 @@ void ouyaFacadePutGameData_platform(const char* pKey, const char* pValue)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     jstring pKey_jstr = env->NewStringUTF(pKey);
+    IwAssert(OUYAFACE, pKey_jstr != 0);
+
     jstring pValue_jstr = env->NewStringUTF(pValue);
+    IwAssert(OUYAFACE, pValue_jstr != 0);
+
     env->CallVoidMethod(g_Obj, g_ouyaFacadePutGameData, pKey_jstr, pValue_jstr);
 
     env->DeleteLocalRef(pKey_jstr);
@@ -588,13 +654,18 @@ s3eResult ouyaFacadeRequestProductList_platform(const char** parPurchasable, int
   {
     JNIEnv* env = s3eEdkJNIGetEnv();
 
-    jclass        cString = env->FindClass("Ljava/lang/String;");
+    jclass        cString = env->FindClass("java/lang/String");
+    IwAssert(OUYAFACE, cString != 0);
+
     jobjectArray  jarPurchasables = env->NewObjectArray(numPurchasables,
       cString, 0);
+    IwAssert(OUYAFACE, jarPurchasables != 0);
 
     for(int i = 0; i < numPurchasables; ++i)
     {
       jstring jPurchasable = env->NewStringUTF(parPurchasable[0]);
+      IwAssert(OUYAFACE, jPurchasable != 0);
+
       env->SetObjectArrayElement(jarPurchasables, i, jPurchasable);
 
       env->DeleteLocalRef(jPurchasable);
@@ -618,6 +689,8 @@ s3eResult ouyaFacadeRequestPurchase_platform(const char* pPurchasable, s3eCallba
   {
     JNIEnv* env = s3eEdkJNIGetEnv();
     jstring pPurchasable_jstr = env->NewStringUTF(pPurchasable);
+    IwAssert(OUYAFACE, pPurchasable_jstr != 0);
+
     env->CallVoidMethod(g_Obj, g_ouyaFacadeRequestPurchase, pPurchasable_jstr);
 
     env->DeleteLocalRef(pPurchasable_jstr);

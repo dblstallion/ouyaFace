@@ -65,10 +65,12 @@ class ouyaFace
 	
   public void	ouyaInit(String developerId, String applicationKey)
   {
+	Log.v(LOG_TAG, "in ouyaInit()...");
     Activity	activity = LoaderAPI.getActivity();
     Context		ctx = activity.getApplicationContext();
     
     OuyaController.init(ctx);
+	Log.v(LOG_TAG, "controller initialised...");
     
     View	view = LoaderAPI.getMainView();
     view.setOnGenericMotionListener(new OnGenericMotionListener() {
@@ -77,8 +79,9 @@ class ouyaFace
       public boolean onGenericMotion(View v, MotionEvent event) {
         if((event.getSource() & InputDevice.SOURCE_CLASS_JOYSTICK) != 0)
         {
-          onGenericMotionEvent(event.getDeviceId(),
-            OuyaController.getPlayerNumByDeviceId(event.getDeviceId()),
+          int deviceId = event.getDeviceId();
+          onGenericMotionEvent(deviceId,
+            OuyaController.getPlayerNumByDeviceId(deviceId),
             event.getAxisValue(OuyaController.AXIS_LS_X),
             event.getAxisValue(OuyaController.AXIS_LS_Y),
             event.getAxisValue(OuyaController.AXIS_RS_X),
@@ -90,20 +93,23 @@ class ouyaFace
         return false;
       }
     });
+	Log.v(LOG_TAG, "onGenericMotionEventListener set...");
     
-    view.setOnKeyListener(new OnKeyListener() {
+    LoaderAPI.pushKeyListener(new OnKeyListener() {
       
       @Override
       public boolean onKey(View v, int keyCode, KeyEvent event) {
-        onKeyEvent(event.getDeviceId(),
-          OuyaController.getPlayerNumByDeviceId(event.getDeviceId()),
+        int deviceId = event.getDeviceId();
+        onKeyEvent(deviceId, OuyaController.getPlayerNumByDeviceId(deviceId),
           keyCode, event.getAction());
         return false;
       }
     });
+	Log.v(LOG_TAG, "onKeyListener set...");
     
     facade = OuyaFacade.getInstance(); 
     facade.init(ctx, developerId);
+	Log.v(LOG_TAG, "OuyaFacade initialised...");
   
     try {
       X509EncodedKeySpec keySpec = new X509EncodedKeySpec(applicationKey.getBytes());
@@ -112,10 +118,12 @@ class ouyaFace
     } catch (Exception e) {
       Log.e(LOG_TAG, "Unable to create encryption key", e);
     }
+	Log.v(LOG_TAG, "public key calculated...");
   }
   
   public void ouyaTerm()
   {
+	Log.v(LOG_TAG, "in ouyaTerm()...");
     View	view = LoaderAPI.getMainView();
     view.setOnGenericMotionListener(null);
     view.setOnKeyListener(null);
@@ -126,54 +134,61 @@ class ouyaFace
   
   public boolean ouyaFacadeIsInitialised()
   {
+	Log.v(LOG_TAG, "in ouyaFacadeIsInitialised()...");
     return facade.isInitialized();
   }
   
   public boolean ouyaFacadeIsRunningOnOUYAHardware()
   {
+	Log.v(LOG_TAG, "in ouyaFacadeIsRunningOnOUYAHardware()...");
     return facade.isRunningOnOUYAHardware();
   }
   
   public String ouyaFacadeGetGameData(String key)
   {
-    String	result = facade.getGameData(key);
+	Log.v(LOG_TAG, "in ouyaFacadeGetGameData()...");
+	String	result = facade.getGameData(key);
     if(result == null)
     {
       result = new String();
     }
+	Log.v(LOG_TAG, "got game data: " + result);
     return result;
   }
   
   public void ouyaFacadePutGameData(String key, String value)
   {
+	Log.v(LOG_TAG, "in ouyaFacadePutGameData()...");
     facade.putGameData(key, value);
+	Log.v(LOG_TAG, "put " + key + ": " + value);
   }
   
   public void ouyaFacadeSetTestMode()
   {
+	Log.v(LOG_TAG, "in ouyaFacadeSetTestMode()...");
     facade.setTestMode();
   }
   
   public void	ouyaFacadeRequestGamerUUID()
   {
+	Log.v(LOG_TAG, "in ouyaFacadeRequestGamerUUID()...");
     facade.requestGamerUuid(new OuyaResponseListener<String>() {
       
       @Override
       public void onSuccess(String result) {
-        // TODO Auto-generated method stub
+		Log.v(LOG_TAG, "in GamerUUID onSuccess()...");
         onGamerUUIDResult(ERROR_NONE, result);
       }
       
       @Override
       public void onFailure(int error, String message, Bundle data) {
-        // TODO Auto-generated method stub
-        Log.e(LOG_TAG, message);
+        Log.e(LOG_TAG, "GamerUUID request failed:" + message);
         onGamerUUIDResult(error, null);
       }
       
       @Override
       public void onCancel() {
-        // TODO Auto-generated method stub
+  		Log.v(LOG_TAG, "in GamerUUID onCancel()...");
         onGamerUUIDResult(ERROR_CANCELLED, null);
       }
     });
@@ -181,21 +196,24 @@ class ouyaFace
   
   public void	ouyaFacadeRequestReceipts()
   {
+	Log.v(LOG_TAG, "in ouyaFacadeRequestReceipts()...");
     facade.requestReceipts(new OuyaResponseListener<String>() {
 
       @Override
       public void onCancel() {
+  		Log.v(LOG_TAG, "in Receipts onCancel()...");
         onReceiptsResult(ERROR_CANCELLED, null);
       }
 
       @Override
       public void onFailure(int error, String message, Bundle data) {
-        Log.e(LOG_TAG, message);
+        Log.e(LOG_TAG, "Receipts request failed:" + message);
         onReceiptsResult(error, null);
       }
 
       @Override
       public void onSuccess(String receiptResponse) {
+		Log.v(LOG_TAG, "in Receipts onSuccess()...");
         OuyaEncryptionHelper helper = new OuyaEncryptionHelper();
         List<Receipt> receipts;
         try {
@@ -240,6 +258,7 @@ class ouyaFace
   
   public void	ouyaFacadeRequestProductList(String[] purchasables)
   {
+	Log.v(LOG_TAG, "in ouyaFacadeRequestProductList()...");
     List<Purchasable>	lPurchasables = new ArrayList<Purchasable>();
     for(String i : purchasables)
     {
@@ -250,17 +269,19 @@ class ouyaFace
 
       @Override
       public void onCancel() {
+		Log.v(LOG_TAG, "in ProductList onCancel()...");
         onProductListResult(ERROR_CANCELLED, null);
       }
 
       @Override
       public void onFailure(int error, String message, Bundle data) {
-        Log.e(LOG_TAG, message);
+    	Log.e(LOG_TAG, "ProductList request failed:" + message);
         onProductListResult(error, null);
       }
 
       @Override
       public void onSuccess(ArrayList<Product> products) {
+  		Log.v(LOG_TAG, "in ProductList onSuccess()...");
         onProductListResult(ERROR_NONE, (Product[]) products.toArray());
       }
     });
@@ -269,6 +290,7 @@ class ouyaFace
   public void ouyaFacadeRequestPurchase(String productId)
   throws GeneralSecurityException, UnsupportedEncodingException, JSONException
   {
+	Log.v(LOG_TAG, "in ouyaFacadeRequestPurchase()...");
     SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
 
     // This is an ID that allows you to associate a successful purchase with
@@ -310,17 +332,19 @@ class ouyaFace
 
         @Override
         public void onCancel() {
+          Log.v(LOG_TAG, "in Purchase onCancel()...");
           onPurchaseResult(ERROR_CANCELLED, null);
         }
 
         @Override
         public void onFailure(int error, String message, Bundle arg2) {
-          Log.e(LOG_TAG, message);
+          Log.e(LOG_TAG, "ProductList request failed:" + message);
           onPurchaseResult(error, null);
         }
 
         @Override
         public void onSuccess(String result) {
+          Log.v(LOG_TAG, "in Purchase onSuccess()...");
           Product product = null;
           String id = null;
           try {

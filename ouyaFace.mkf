@@ -37,6 +37,7 @@ if {{ not defined IW_MKF_IWCRT}}
 #Include the extension's jar file during deployment
 deployments
 {
+    android-external-jars="C:/OUYA-ODK/libs/ouya-sdk.jar"
     android-external-jars="lib/android/ouyaFace.jar"
     android-so="lib/android/libouyaFace.so"
 }
