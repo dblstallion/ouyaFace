@@ -1,4 +1,5 @@
 ouyaFace
 ========
 
-Marmalade extension to access Ouya Facade and Ouya Controllers
+OUYA Facade And Controllers Extension for use with the Marmalade SDK.
+
