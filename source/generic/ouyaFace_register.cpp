@@ -48,13 +48,13 @@ static int ouyaFacadeIsRunningOnOUYAHardware_wrap()
     return (int)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeIsRunningOnOUYAHardware, 0);
 }
 
-static void ouyaFacadeGetGameData_wrap(const char* pKey, char* pBuffer, int bufferSize)
+static void ouyaFacadeGetGameData_wrap(const char * pKey, char * pBuffer, int bufferSize)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeGetGameData"));
     s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeGetGameData, 3, pKey, pBuffer, bufferSize);
 }
 
-static void ouyaFacadePutGameData_wrap(const char* pKey, const char* pValue)
+static void ouyaFacadePutGameData_wrap(const char * pKey, const char * pValue)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadePutGameData"));
     s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadePutGameData, 2, pKey, pValue);
@@ -66,31 +66,31 @@ static void ouyaFacadeSetTestMode_wrap()
     s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeSetTestMode, 0);
 }
 
-static s3eResult ouyaFacadeRequestGamerUUID_wrap(s3eCallback pCallback, void* pUserData)
+static s3eResult ouyaFacadeRequestGamerUUID_wrap(s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestGamerUUID"));
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestGamerUUID, 2, pCallback, pUserData);
 }
 
-static s3eResult ouyaFacadeRequestReceipts_wrap(s3eCallback pCallback, void* pUserData)
+static s3eResult ouyaFacadeRequestReceipts_wrap(s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestReceipts"));
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestReceipts, 2, pCallback, pUserData);
 }
 
-static s3eResult ouyaFacadeRequestProductList_wrap(const char** parPurchasable, int numPurchasables, s3eCallback pCallback, void* pUserData)
+static s3eResult ouyaFacadeRequestProductList_wrap(const char ** parPurchasable, int numPurchasables, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestProductList"));
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestProductList, 4, parPurchasable, numPurchasables, pCallback, pUserData);
 }
 
-static s3eResult ouyaFacadeRequestPurchase_wrap(const char* pPurchasable, s3eCallback pCallback, void* pUserData)
+static s3eResult ouyaFacadeRequestPurchase_wrap(const char * pPurchasable, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaFacadeRequestPurchase"));
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaFacadeRequestPurchase, 3, pPurchasable, pCallback, pUserData);
 }
 
-static s3eResult ouyaControllerRegister_wrap(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
+static s3eResult ouyaControllerRegister_wrap(OuyaControllerEvent type, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace func on main thread: ouyaControllerRegister"));
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ouyaControllerRegister, 3, type, pCallback, pUserData);

@@ -26,14 +26,14 @@ typedef       void(*ouyaInit_t)(const char* pDeveloperId, const char* pApplicati
 typedef       void(*ouyaTerm_t)();
 typedef        int(*ouyaFacadeIsInitialised_t)();
 typedef        int(*ouyaFacadeIsRunningOnOUYAHardware_t)();
-typedef       void(*ouyaFacadeGetGameData_t)(const char* pKey, char* pBuffer, int bufferSize);
-typedef       void(*ouyaFacadePutGameData_t)(const char* pKey, const char* pValue);
+typedef       void(*ouyaFacadeGetGameData_t)(const char * pKey, char * pBuffer, int bufferSize);
+typedef       void(*ouyaFacadePutGameData_t)(const char * pKey, const char * pValue);
 typedef       void(*ouyaFacadeSetTestMode_t)();
-typedef  s3eResult(*ouyaFacadeRequestGamerUUID_t)(s3eCallback pCallback, void* pUserData);
-typedef  s3eResult(*ouyaFacadeRequestReceipts_t)(s3eCallback pCallback, void* pUserData);
-typedef  s3eResult(*ouyaFacadeRequestProductList_t)(const char** parPurchasable, int numPurchasables, s3eCallback pCallback, void* pUserData);
-typedef  s3eResult(*ouyaFacadeRequestPurchase_t)(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
-typedef  s3eResult(*ouyaControllerRegister_t)(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
+typedef  s3eResult(*ouyaFacadeRequestGamerUUID_t)(s3eCallback pCallback, void * pUserData);
+typedef  s3eResult(*ouyaFacadeRequestReceipts_t)(s3eCallback pCallback, void * pUserData);
+typedef  s3eResult(*ouyaFacadeRequestProductList_t)(const char ** parPurchasable, int numPurchasables, s3eCallback pCallback, void * pUserData);
+typedef  s3eResult(*ouyaFacadeRequestPurchase_t)(const char * pPurchasable, s3eCallback pCallback, void * pUserData);
+typedef  s3eResult(*ouyaControllerRegister_t)(OuyaControllerEvent type, s3eCallback pCallback, void * pUserData);
 typedef  s3eResult(*ouyaControllerUnRegister_t)(OuyaControllerEvent type, s3eCallback pCallback);
 typedef        int(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
 typedef      float(*ouyaControllerGetAxis_t)(uint32 controller, uint32 axis);
@@ -148,7 +148,7 @@ int ouyaFacadeIsInitialised()
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[2] func: ouyaFacadeIsInitialised"));
 
     if (!_extLoad())
-        return;
+        return 0;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -168,7 +168,7 @@ int ouyaFacadeIsRunningOnOUYAHardware()
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[3] func: ouyaFacadeIsRunningOnOUYAHardware"));
 
     if (!_extLoad())
-        return;
+        return 0;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -183,7 +183,7 @@ int ouyaFacadeIsRunningOnOUYAHardware()
     return ret;
 }
 
-void ouyaFacadeGetGameData(const char* pKey, char* pBuffer, int bufferSize)
+void ouyaFacadeGetGameData(const char * pKey, char * pBuffer, int bufferSize)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[4] func: ouyaFacadeGetGameData"));
 
@@ -203,7 +203,7 @@ void ouyaFacadeGetGameData(const char* pKey, char* pBuffer, int bufferSize)
     return;
 }
 
-void ouyaFacadePutGameData(const char* pKey, const char* pValue)
+void ouyaFacadePutGameData(const char * pKey, const char * pValue)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[5] func: ouyaFacadePutGameData"));
 
@@ -243,12 +243,12 @@ void ouyaFacadeSetTestMode()
     return;
 }
 
-s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData)
+s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[7] func: ouyaFacadeRequestGamerUUID"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -263,12 +263,12 @@ s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData)
     return ret;
 }
 
-s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData)
+s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[8] func: ouyaFacadeRequestReceipts"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -283,12 +283,12 @@ s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData)
     return ret;
 }
 
-s3eResult ouyaFacadeRequestProductList(const char** parPurchasable, int numPurchasables, s3eCallback pCallback, void* pUserData)
+s3eResult ouyaFacadeRequestProductList(const char ** parPurchasable, int numPurchasables, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[9] func: ouyaFacadeRequestProductList"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -303,12 +303,12 @@ s3eResult ouyaFacadeRequestProductList(const char** parPurchasable, int numPurch
     return ret;
 }
 
-s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallback, void* pUserData)
+s3eResult ouyaFacadeRequestPurchase(const char * pPurchasable, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[10] func: ouyaFacadeRequestPurchase"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -323,12 +323,12 @@ s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallb
     return ret;
 }
 
-s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData)
+s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void * pUserData)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[11] func: ouyaControllerRegister"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -348,7 +348,7 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[12] func: ouyaControllerUnRegister"));
 
     if (!_extLoad())
-        return;
+        return S3E_RESULT_ERROR;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -368,7 +368,7 @@ int ouyaControllerGetButtonState(uint32 controller, uint32 button)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[13] func: ouyaControllerGetButtonState"));
 
     if (!_extLoad())
-        return;
+        return 0;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
@@ -388,7 +388,7 @@ float ouyaControllerGetAxis(uint32 controller, uint32 axis)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[14] func: ouyaControllerGetAxis"));
 
     if (!_extLoad())
-        return;
+        return 0;
 
 #ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);

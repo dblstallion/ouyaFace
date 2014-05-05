@@ -181,12 +181,12 @@ int ouyaFacadeIsRunningOnOUYAHardware();
 /*
  * @brief Attempts to retrieve and return a @a pValue stored under @a pKey.
  */
-void ouyaFacadeGetGameData(const char* pKey, char* pBuffer, int bufferSize);
+void ouyaFacadeGetGameData(const char * pKey, char * pBuffer, int bufferSize);
 
 /*
  * @brief Stores a @a pValue string under @a pKey. How long it will be persisted will depend on its size and usage.
  */
-void ouyaFacadePutGameData(const char* pKey, const char* pValue);
+void ouyaFacadePutGameData(const char * pKey, const char * pValue);
 
 /*
  * @brief Sets OuyaFacade to test mode for the intents of purposes of
@@ -198,35 +198,35 @@ void ouyaFacadeSetTestMode();
  * @brief Requests the UUID for the current account. The system data parameter
  *        of the callback will point to an OuyaFacadeGamerUUIDResult object.
  */
-s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData);
+s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void * pUserData);
 
 /*
  * @brief Requests the receipts for the current account and app. The system
  *        data parameter of the callback will point to an
  *        OuyaFacadeReceiptsResult object.
  */
-s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData);
+s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void * pUserData);
 
 /*
  * @brief Requests information for the given list of purchasables. The system
  *        data parameter of the callback will point to an
  *        OuyaFacadeProductListResult object.
  */
-s3eResult ouyaFacadeRequestProductList(const char** parPurchasable,  int numPurchasables, s3eCallback pCallback, void* pUserData);
+s3eResult ouyaFacadeRequestProductList(const char ** parPurchasable,  int numPurchasables, s3eCallback pCallback, void * pUserData);
 
 /*
  * @brief Requests the purchase of the the given purchasable. The system data
  *        parameter of the callback will point to an OuyaFacadePurchaseResult
  *        object.
  */
-s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
+s3eResult ouyaFacadeRequestPurchase(const char * pPurchasable, s3eCallback pCallback, void * pUserData);
 
 /*
  * @brief Registers a controller event handler for the given event type.
  *        The system data parameter of the callback will point to objects type
  *        corresponding the event type.
  */
-s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
+s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback, void * pUserData);
 
 /*
  * @brief Unregisters the given controller event handler for the given event
