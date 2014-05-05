@@ -10,13 +10,22 @@
 
 #include "ouyaFace.h"
 
+
+#ifndef S3E_EXT_SKIP_LOADER_CALL_LOCK
+// For MIPs (and WP8) platform we do not have asm code for stack switching
+// implemented. So we make LoaderCallStart call manually to set GlobalLock
+#if defined __mips || defined S3E_ANDROID_X86 || (defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP))
+#define LOADER_CALL_LOCK
+#endif
+#endif
+
 /**
  * Definitions for functions types passed to/from s3eExt interface
  */
 typedef       void(*ouyaInit_t)(const char* pDeveloperId, const char* pApplicationKey);
 typedef       void(*ouyaTerm_t)();
-typedef      int32(*ouyaFacadeIsInitialised_t)();
-typedef      int32(*ouyaFacadeIsRunningOnOUYAHardware_t)();
+typedef        int(*ouyaFacadeIsInitialised_t)();
+typedef        int(*ouyaFacadeIsRunningOnOUYAHardware_t)();
 typedef       void(*ouyaFacadeGetGameData_t)(const char* pKey, char* pBuffer, int bufferSize);
 typedef       void(*ouyaFacadePutGameData_t)(const char* pKey, const char* pValue);
 typedef       void(*ouyaFacadeSetTestMode_t)();
@@ -26,7 +35,7 @@ typedef  s3eResult(*ouyaFacadeRequestProductList_t)(const char** parPurchasable,
 typedef  s3eResult(*ouyaFacadeRequestPurchase_t)(const char* pPurchasable, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerRegister_t)(OuyaControllerEvent type, s3eCallback pCallback, void* pUserData);
 typedef  s3eResult(*ouyaControllerUnRegister_t)(OuyaControllerEvent type, s3eCallback pCallback);
-typedef      int32(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
+typedef        int(*ouyaControllerGetButtonState_t)(uint32 controller, uint32 button);
 typedef      float(*ouyaControllerGetAxis_t)(uint32 controller, uint32 axis);
 
 /**
@@ -65,7 +74,7 @@ static bool _extLoad()
             g_GotExt = true;
         else
             s3eDebugAssertShow(S3E_MESSAGE_CONTINUE_STOP_IGNORE,                 "error loading extension: ouyaFace");
-            
+
         g_TriedExt = true;
         g_TriedNoMsgExt = true;
     }
@@ -101,15 +110,13 @@ void ouyaInit(const char* pDeveloperId, const char* pApplicationKey)
     if (!_extLoad())
         return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     g_Ext.m_ouyaInit(pDeveloperId, pApplicationKey);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -123,59 +130,53 @@ void ouyaTerm()
     if (!_extLoad())
         return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     g_Ext.m_ouyaTerm();
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
     return;
 }
 
-int32 ouyaFacadeIsInitialised()
+int ouyaFacadeIsInitialised()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[2] func: ouyaFacadeIsInitialised"));
 
     if (!_extLoad())
-        return S3E_FALSE;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     int ret = g_Ext.m_ouyaFacadeIsInitialised();
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
     return ret;
 }
 
-int32 ouyaFacadeIsRunningOnOUYAHardware()
+int ouyaFacadeIsRunningOnOUYAHardware()
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[3] func: ouyaFacadeIsRunningOnOUYAHardware"));
 
     if (!_extLoad())
-        return S3E_FALSE;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     int ret = g_Ext.m_ouyaFacadeIsRunningOnOUYAHardware();
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -189,15 +190,13 @@ void ouyaFacadeGetGameData(const char* pKey, char* pBuffer, int bufferSize)
     if (!_extLoad())
         return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     g_Ext.m_ouyaFacadeGetGameData(pKey, pBuffer, bufferSize);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -211,15 +210,13 @@ void ouyaFacadePutGameData(const char* pKey, const char* pValue)
     if (!_extLoad())
         return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     g_Ext.m_ouyaFacadePutGameData(pKey, pValue);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -233,15 +230,13 @@ void ouyaFacadeSetTestMode()
     if (!_extLoad())
         return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     g_Ext.m_ouyaFacadeSetTestMode();
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -253,17 +248,15 @@ s3eResult ouyaFacadeRequestGamerUUID(s3eCallback pCallback, void* pUserData)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[7] func: ouyaFacadeRequestGamerUUID"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaFacadeRequestGamerUUID(pCallback, pUserData);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -275,17 +268,15 @@ s3eResult ouyaFacadeRequestReceipts(s3eCallback pCallback, void* pUserData)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[8] func: ouyaFacadeRequestReceipts"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaFacadeRequestReceipts(pCallback, pUserData);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -297,17 +288,15 @@ s3eResult ouyaFacadeRequestProductList(const char** parPurchasable, int numPurch
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[9] func: ouyaFacadeRequestProductList"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaFacadeRequestProductList(parPurchasable, numPurchasables, pCallback, pUserData);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -319,17 +308,15 @@ s3eResult ouyaFacadeRequestPurchase(const char* pPurchasable, s3eCallback pCallb
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[10] func: ouyaFacadeRequestPurchase"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaFacadeRequestPurchase(pPurchasable, pCallback, pUserData);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -341,17 +328,15 @@ s3eResult ouyaControllerRegister(OuyaControllerEvent type, s3eCallback pCallback
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[11] func: ouyaControllerRegister"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaControllerRegister(type, pCallback, pUserData);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -363,39 +348,35 @@ s3eResult ouyaControllerUnRegister(OuyaControllerEvent type, s3eCallback pCallba
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[12] func: ouyaControllerUnRegister"));
 
     if (!_extLoad())
-        return S3E_RESULT_ERROR;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     s3eResult ret = g_Ext.m_ouyaControllerUnRegister(type, pCallback);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
     return ret;
 }
 
-int32 ouyaControllerGetButtonState(uint32 controller, uint32 button)
+int ouyaControllerGetButtonState(uint32 controller, uint32 button)
 {
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[13] func: ouyaControllerGetButtonState"));
 
     if (!_extLoad())
-        return S3E_FALSE;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     int ret = g_Ext.m_ouyaControllerGetButtonState(controller, button);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
@@ -407,17 +388,15 @@ float ouyaControllerGetAxis(uint32 controller, uint32 axis)
     IwTrace(OUYAFACE_VERBOSE, ("calling ouyaFace[14] func: ouyaControllerGetAxis"));
 
     if (!_extLoad())
-        return .0f;
+        return;
 
-#ifdef __mips
-    // For MIPs platform we do not have asm code for stack switching 
-    // implemented. So we make LoaderCallStart call manually to set GlobalLock
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallStart(S3E_TRUE, NULL);
 #endif
 
     float ret = g_Ext.m_ouyaControllerGetAxis(controller, axis);
 
-#ifdef __mips
+#ifdef LOADER_CALL_LOCK
     s3eDeviceLoaderCallDone(S3E_TRUE, NULL);
 #endif
 
